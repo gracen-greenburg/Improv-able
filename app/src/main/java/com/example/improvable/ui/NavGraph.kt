@@ -10,6 +10,7 @@ import androidx.compose.material3.Button
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
+import com.example.improvable.ui.screens.HomeScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -17,35 +18,66 @@ fun NavGraph(navController: NavHostController) {
         navController = navController,
         startDestination = "home"
     ) {
-        composable("home") {
-            HomeScreen(onNavigateToDetails = { navController.navigate("details") })
+        composable("home") { // home screen
+            HomeScreen(
+                onNavigateToWarmups = { navController.navigate("warmups") },
+                onNavigateToGames = { navController.navigate("games") }
+            )
         }
-        composable("details") {
-            DetailsScreen(onNavigateBack = { navController.popBackStack() })
+        composable("warmups") { // screen where we give warm up ideas // structure
+            WarmupsScreen(
+                onNavigateBack = {
+                    navController.popBackStack() }
+            )
+        }
+        composable("games") { // eventually will have list (SCROLLABLE), search function
+            GamesScreen(              // NOTE FOR LATER:::: do a tag system so they can filter by tags
+                onNavigateBack = {
+                    navController.popBackStack()
+                }
+            )
         }
     }
 }
 
 @Composable
-fun HomeScreen(onNavigateToDetails: () -> Unit) {
+fun HomeScreen( // starting with three basic screens to get into the flow
+    onNavigateToWarmups: () -> Unit,
+    onNavigateToGames: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "Home Screen")
-        Button(onClick = onNavigateToDetails) {
-            Text(text = "Go to Details")
+        Button(onClick = onNavigateToWarmups) {
+            Text(text = "Go to WARMUPS")
+        }
+        Button(onClick = onNavigateToGames) {
+            Text(text = "Go to GAMEs")
         }
     }
 }
 
 @Composable
-fun DetailsScreen(onNavigateBack: () -> Unit) {
+fun WarmupsScreen(onNavigateBack: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Details Screen")
+        Text(text = "Warm ups but SO BASIC")
+        Button(onClick = onNavigateBack) {
+            Text(text = "Back")
+        }
+    }
+}
+
+@Composable
+fun GamesScreen(onNavigateBack: () -> Unit) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "Games Sceen BASIC EDITION")
         Button(onClick = onNavigateBack) {
             Text(text = "Back")
         }

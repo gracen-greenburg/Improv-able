@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Improv-able</string>
+    <style name="Theme.Improvable" parent="android:Theme.Material.Light.NoActionBar"/>
+</resources>
