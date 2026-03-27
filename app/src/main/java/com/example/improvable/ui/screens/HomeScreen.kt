@@ -21,6 +21,11 @@ fun HomeScreen(
     // 3/26 starting small with 2 basic screens (no searching yet)
     onNavigateToWarmups: () -> Unit,
     onNavigateToGames: () -> Unit,
+    onNavigateToSearch: () -> Unit,
+    onNavigateToLeadership: () -> Unit,
+    onNavigateToRoster: () -> Unit,
+    onNavigateToRecording: () -> Unit,
+    onNavigateToSuggestions: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -36,6 +41,30 @@ fun HomeScreen(
 
         Button(onClick = onNavigateToGames) {
             Text("Games")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(onClick = onNavigateToSearch) {
+            Text("Search")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(onClick = onNavigateToLeadership) {
+            Text("Leadership")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(onClick = onNavigateToRoster) {
+            Text("Roster")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(onClick = onNavigateToSuggestions) {
+            Text("Suggestions")
         }
     }
 }
