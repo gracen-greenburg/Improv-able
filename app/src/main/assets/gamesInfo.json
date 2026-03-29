@@ -1,0 +1,452 @@
+[
+  {
+    "id": "1",
+    "title": "Alphabet Game",
+    "minPlayers": 2,
+    "maxPlayers": 3,
+    "description": "2-3 players are given a scene suggestion. They must do a scene where they complete the alphabet. The first person to speak starts their sentence with A, the second person starts theirs with B, and so on until they reach Z.",
+    "lastPlayed": null,
+    "tags": ["Quick", "Wordplay", "Short Form"]
+  },
+  {
+    "id": "2",
+    "title": "Alter Ego",
+    "minPlayers": 2,
+    "maxPlayers": 2,
+    "description": "2 players are given a scene suggestion. At any point in the scene, one may step forward for an aside, freezing the second player in place. They begin their short aside with, “What they don’t know…” and tell us all about their scheme. Both complete 1-2 asides, then scene ends. " ,
+    "lastPlayed": null,
+    "tags": ["Short Form", "Quick"]
+  },
+  {
+    "id": "3",
+    "title": "Bartender",
+    "minPlayers": 2,
+    "maxPlayers": 2,
+    "description": "One player is the bartender, and the other is a patron with a problem. The patron explains their problem in song, and the bartender responds with advice in song.",
+    "lastPlayed": null,
+    "tags": ["Musical", "Short Form", "Duet"]
+  },
+  {
+    "id": "4",
+    "title": "Celebrity Funeral",
+    "minPlayers": 4,
+    "maxPlayers": 5,
+    "description": "One person is the director of a funeral. They leave the room, and a mystery celebrity is decided on. Other players are friends/fam of the deceased who give guest speeches. Funeral director must guess what celebrity/character has died. ",
+    "lastPlayed": null,
+    "tags": ["Guessing", "Character", "Audience"]
+  },
+  {
+    "id": "5",
+    "title": "Crabtree’s Conundrum",
+    "minPlayers": 2,
+    "maxPlayers": 2,
+    "description": "Two players perform a scene. At any point, one may say 'what did you say?' and the other player must come up with something that responds with the last thing they said. ",
+    "lastPlayed": null,
+    "tags": ["Wordplay", "Quick", "Short Form"]
+  },
+  {
+    "id": "6",
+    "title": "Dating Game",
+    "minPlayers": 4,
+    "maxPlayers": 4,
+    "description": "One player is an eligible bachelor/bachelorette, and three are contestants with secret traits given by the audience. The bachelor asks questions and must guess each contestant’s quirk.",
+    "lastPlayed": null,
+    "tags": ["Guessing", "Audience", "Short Form"]
+  },
+  {
+    "id": "7",
+    "title": "Emotional Triad",
+    "minPlayers": 3,
+    "maxPlayers": 3,
+    "description": "The stage is divided into three emotional zones. After getting a scene suggestion, players must adopt the emotion of whichever zone they are in during the scene.",
+    "lastPlayed": null,
+    "tags": ["Quick", "Short Form", "Physical"]
+  },
+  {
+    "id": "8",
+    "title": "Emo Waiter",
+    "minPlayers": 3,
+    "maxPlayers": 3,
+    "description": "2 players are out to dinner at a restaurant. They leave the room, and the audience decides an emotion for each. The 3rd player is the waiter, and interacts with each patron by reflecting their assigned emotion. Patron must guess what emotion they’ve been assigned. ",
+    "lastPlayed": null,
+    "tags": ["Guessing", "Audience", "Short Form"]
+  },
+  {
+    "id": "9",
+    "title": "Expert Opinion",
+    "minPlayers": 4,
+    "maxPlayers": null,
+    "description": "A public hearing is held about a problem. Each player is an expert and must answer questions from others attending.",
+    "lastPlayed": null,
+    "tags": ["Town Hall", "Audience", "Short Form"]
+  },
+  {
+    "id": "10",
+    "title": "Film Critics",
+    "minPlayers": 4,
+    "maxPlayers": 4,
+    "description": "2 players are actors in a movie based on a suggestion, and 2 players are film critics. Movie starts with an opening scene between actors, then is paused by film critics. They discuss the scene, decide to fast forward, and give a hint at what happens at the climax. Actors perform the scene based on the hint. Movie is paused, film critics explain what will happen at the end, and fast forward to it. Actors perform it based on the hint. ",
+    "lastPlayed": null,
+    "tags": ["Directed", "Short Form", "Meta"]
+  },
+  {
+    "id": "11",
+    "title": "Film Noir",
+    "minPlayers": 3,
+    "maxPlayers": 6,
+    "description": "2 Players sit on chairs facing the audience. Get a location suggestion from the audience, and one player begins describing the scene in intense detail. After about 30 seconds, switch to the second player, who describes the scene in intense detail from their character’s perspective. After both have spoken 2-3 times, the other players get up and act out the scene as vividly as possible, portraying everything they described at the beginning. In the acting phase, nothing can be added or changed, nor can dialogue be used unless it was explicitly stated what lines of dialogue were said in the beginning. ",
+    "lastPlayed": null,
+    "tags": ["Directed", "Short Form", "Meta"]
+  },
+  {
+    "id": "12",
+    "title": "Foreign Film Dub",
+    "minPlayers": 4,
+    "maxPlayers": 4,
+    "description": "Two players act silently in a foreign film while two others provide improvised dubbed dialogue.",
+    "lastPlayed": null,
+    "tags": ["Directed", "Short Form", "Meta"]
+  },
+  {
+    "id": "13",
+    "title": "Gaston",
+    "minPlayers": 6,
+    "maxPlayers": 7,
+    "description": "Split players into 2 teams of 3. Choose a 1 syllable word such as “sit”, and begin cadence. Song follows cadence of “Gaston” from Beauty and the Beast. \n\nNo one sits like Gaston\nNo one hits like Gaston\nOn the dance floor no one does the splits like Gaston\nHe is a fantastic gymnast!\n     All: My what a guy that Gaston! \n",
+    "lastPlayed": null,
+    "tags": ["Musical", "Competition", "Short Form"]
+  },
+  {
+    "id": "14",
+    "title": "The Good, The Bad, and The Ugly",
+    "minPlayers": 3,
+    "maxPlayers": 3,
+    "description": "3 players are on a talk show. Each is assigned to Good, Bad, or Dirty. Audience asks advice from each on problems occurring in their lives, and players must give a good response, a bad response, or a dirty response. ",
+    "lastPlayed": null,
+    "tags": ["Audience", "Short Form"]
+  },
+  {
+    "id": "15",
+    "title": "Good Cop, Bad Cop",
+    "minPlayers": 3,
+    "maxPlayers": 3,
+    "description": "1 player is under interrogation for a wacky crime. 2 other players are Good Cop and Bad Cop, and must drop hints as to what crime player 1 committed while they interrogate them. ",
+    "lastPlayed": null,
+    "tags": ["Guessing", "Audience", "Short Form"]
+  },
+  {
+    "id": "16",
+    "title": "Half Life",
+    "minPlayers": 2,
+    "maxPlayers": null,
+    "description": "Players perform a 1 minute scene. At the end, they replay the scene in 30 seconds. Then 15, then 7, then 3. ",
+    "lastPlayed": null,
+    "tags": ["Replay", "Timing", "Quick", "Short Form"]
+  },
+  {
+    "id": "17",
+    "title": "Helping Hands",
+    "minPlayers": 3,
+    "maxPlayers": 3,
+    "description": "One player has come to talk to their boss about a problem in the workplace. The boss is seated at a desk with another player behind them, acting as the boss’ arms. The scene continues with the employee trying to act casual as their boss is flailing around. ",
+    "lastPlayed": null,
+    "tags": ["Physical", "Quick", "Short Form"]
+  },
+  {
+    "id": "18",
+    "title": "Letter to A",
+    "minPlayers": 2,
+    "maxPlayers": null,
+    "description": "Players write a letter one word at a time, starting with 'Dear...' and ending with 'Sincerely, me.'",
+    "lastPlayed": null,
+    "tags": ["Wordplay", "Quick", "Short Form"]
+  },
+  {
+    "id": "19",
+    "title": "Lines From A",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "description": "Players perform a scene based on an audience suggestion. There is a hat full of pre-written lines in the playing area, and at any time a player can take one to use, reading the line and continuing the scene with whatever was written. ",
+    "lastPlayed": null,
+    "tags": ["Wordplay", "Short Form", "Props"]
+  },
+  {
+    "id": "20",
+    "title": "Let Me Think About That",
+    "minPlayers": 3,
+    "maxPlayers": 3,
+    "description": "Two players perform a scene based on a suggestion. At any time, one player may say “let me think about that…” and the third player enters the scene and delivers a short monologue of what that player is thinking at the moment. ",
+    "lastPlayed": null,
+    "tags": ["Narration", "Scene", "Thought"]
+  },
+  {
+    "id": "21",
+    "title": "New Choice",
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "description": "Players perform a scene based on a suggestion. At any point, the fronter may call “new choice” and a player changes what they just did until fronter is satisfied. ",
+    "lastPlayed": null,
+    "tags": ["Directed", "Quick", "Short Form"]
+  },
+  {
+    "id": "22",
+    "title": "Oracle",
+    "minPlayers": 3,
+    "maxPlayers": 3,
+    "description": "Players join arms and act as the all knowing oracle. Speaking one word at a time, this oracle answers audience questions with their divine knowledge. When The Oracle is finished answering, they say (one word at a time) \"The Oracle has spoken”",
+    "lastPlayed": null,
+    "tags": ["Wordplay", "Audience", "Short Form"]
+  },
+  {
+    "id": "23",
+    "title": "Oscar On",
+    "minPlayers": 3,
+    "maxPlayers": 4,
+    "description": "Players perform a scene based on a suggestion. At any point, fronter may tell a player, “Oscar On”. That player steps forward and delivers an Oscar winning monologue. When fronter calls “Oscar Off”, the scene continues as normal. ",
+    "lastPlayed": null,
+    "tags": ["Directed", "Meta", "Short Form"]
+  },
+  {
+    "id": "24",
+    "title": "Park Bench",
+    "minPlayers": 4,
+    "maxPlayers": null,
+    "description": "All players line up. One player begins on a bench, and another sits down to perform a short, 1 minute scene interacting with them. After the scene is concluded, the starter exits, the second player moves over, and a new player enters the scene, so on and so forth until everyone has gone. ",
+    "lastPlayed": null,
+    "tags": ["Short Form", "All Play"]
+  },
+  {
+    "id": "25",
+    "title": "Pan Four",
+    "minPlayers": 4,
+    "maxPlayers": 4,
+    "description": "4 players stand as the corners of a large square. Based on fronter’s direction, the square can rotate left, right, uh X (across the middle). Choose a suggestion for each possible group of 2 improvisers. Scenes rotate as fronter calls them to change. ",
+    "lastPlayed": null,
+    "tags": ["Directed", "Short Form", "Physical"]
+  },
+  {
+    "id": "26",
+    "title": "Party Quirks",
+    "minPlayers": 5,
+    "maxPlayers": 5,
+    "description": "One player is hosting a party. All other players are given traits, characters, or quirks to act as. The party host must welcome attendees to their party and interact with them to gain hints. As host guesses each attendee’s quirk, they exit the party until the host is alone again. ",
+    "lastPlayed": null,
+    "tags": ["Guessing", "Audience", "Short Form"]
+  },
+  {
+    "id": "27",
+    "title": "Pavlov’s Response",
+    "minPlayers": 3,
+    "maxPlayers": 3,
+    "description": "Each player is given a trigger word, such as “coffee”. A scene takes place. Every time a player’s trigger word is spoken, they must exit or enter the scene. ",
+    "lastPlayed": null,
+    "tags": ["Wordplay", "Quick", "Short Form"]
+  },
+  {
+    "id": "28",
+    "title": "Pillars",
+    "minPlayers": 4,
+    "maxPlayers": 4,
+    "description": "2 players are performing a short scene. Assign the other players to each, and at any point an actor may clap, and their assistant has to make a sound effect or say a word that will be used to continue the scene. ",
+    "lastPlayed": null,
+    "tags": ["Directed", "Word Play", "Short Form"]
+  },
+  {
+    "id": "29",
+    "title": "POW",
+    "minPlayers": 4,
+    "maxPlayers": 6,
+    "description": "Played like a game of telephone, only the starter knows the clues. Audience gives them a place, and occupation, and a weapon. One by one, the next player comes in and watches the starter mime the clues. When they think they know one, they clap. When they think they know the weapon, audience says, “3,2,1, kill!” and they kill the starter with the weapon. Then the next player comes in, so on and so forth. At the end of the game, each says what they thought the clues were. ",
+    "lastPlayed": null,
+    "tags": ["Guessing", "Physical", "Short Form"]
+  },
+  {
+    "id": "30",
+    "title": "Queen is Coming",
+    "minPlayers": 3,
+    "maxPlayers": 3,
+    "description": "2 players are performing a scene based on audience suggestion. At some point, fronter calls “queen is coming”, and the boss of the 2 players enters, asks what they think they’re doing, and gives them new orders. Players have to act casual and try not to get in trouble with boss. Boss enters scene 3 times before it ends. ",
+    "lastPlayed": null,
+    "tags": ["Directed", "Short Form", "Physical"]
+  },
+  {
+    "id": "31",
+    "title": "Questions Only",
+    "minPlayers": 2,
+    "maxPlayers": 2,
+    "description": "2 person scene based on a suggestion where the only lines allowed to be spoken between the two are questions. ",
+    "lastPlayed": null,
+    "tags": ["Wordplay", "Quick", "Short Form"]
+  },
+  {
+    "id": "32",
+    "title": "Replay",
+    "minPlayers": 2,
+    "maxPlayers": 2,
+    "description": "Players perform a short scene (1-2 minutes). At the end, audience gives a suggestion for how to replay it. Some examples of replay suggestions are: changing emotion, changing speed, changing accent, changing time period, etc. ",
+    "lastPlayed": null,
+    "tags": ["Replay", "Directed", "Quick"]
+  },
+  {
+    "id": "33",
+    "title": "Ring Ring",
+    "minPlayers": 4,
+    "maxPlayers": 4,
+    "description": "2 players are performing a scene, and 2 players are waiting to call them. Anytime one of the callers says 'Ring Ring', that player must find an excuse to get on the phone, regardless of what is happening in the scene at that time.",
+    "lastPlayed": null,
+    "tags": ["Short Form", "Directed", "Physical"]
+  },
+  {
+    "id": "34",
+    "title": "Roll For It",
+    "minPlayers": 3,
+    "maxPlayers": 3,
+    "description": "2 players perform a short scene while one sits aside with a d20. A certain amount of times chosen beforehand the player with the dice can call to roll for it when they see or hear an action, in which they roll the dice. The player will preform the action on a scale of 1-20. ",
+    "lastPlayed": null,
+    "tags": ["Directed", "Meta", "Short Form"]
+  },
+  {
+    "id": "35",
+    "title": "Scene in the Dark",
+    "minPlayers": 2,
+    "maxPlayers": 2,
+    "description": "Lights are turned off, and 2 players perform a complete, verbal only scene. Use sound effects to your advantage. ",
+    "lastPlayed": null,
+    "tags": ["Short Form", "Quick"]
+  },
+  {
+    "id": "36",
+    "title": "Slam Poetry",
+    "minPlayers": 3,
+    "maxPlayers": 4,
+    "description": "Players form a backline, and audience gives each a suggestion for an emotion. Get a suggestion for a starting line, and players must step forward and create a spontaneous poem starting with the line, and including the emotion they were given. ",
+    "lastPlayed": null,
+    "tags": ["Wordplay", "All Play", "Short Form"]
+  },
+  {
+    "id": "37",
+    "title": "Shoehorn",
+    "minPlayers": 2,
+    "maxPlayers": 3,
+    "description": "NEEDS FURTHER DEVELOPMENT",
+    "lastPlayed": null,
+    "tags": ["Wordplay", "Short Form", "Playtesting"]
+  },
+  {
+    "id": "38",
+    "title": "Silence",
+    "minPlayers": 2,
+    "maxPlayers": null,
+    "description": "2 person scene in which the fronter can call silence at any point. If silence is called, players must continue the scene nonverbally until silence is lifted by the fronter. ",
+    "lastPlayed": null,
+    "tags": ["Physical", "Directed", "Short Form", "Quick"]
+  },
+  {
+    "id": "39",
+    "title": "Sit, Stand, Lean",
+    "minPlayers": 3,
+    "maxPlayers": 3,
+    "description": "3 person scene in which one player must be standing, one sitting, and one leaning at all times. Players must pay attention to each other and pick up whichever position isn’t occupied. Use 2 chairs for scene. ",
+    "lastPlayed": null,
+    "tags": ["Physical", "Quick"]
+  },
+  {
+    "id": "40",
+    "title": "Sounds Like a Song Cue",
+    "minPlayers": 2,
+    "maxPlayers": 2,
+    "description": "At any point in the scene, one player may say “that sounds like a song cue” to the other. That player must then perform an improvised song based on the line they were prompted for. After one player performs a song, the other player performs a song when prompted. ",
+    "lastPlayed": null,
+    "tags": ["Musical", "Quick",  "Short Form"]
+  },
+  {
+    "id": "41",
+    "title": "Space Jump",
+    "minPlayers": 4,
+    "maxPlayers": 4,
+    "description": "One player begins moving on stage, and a second player calls “space jump!”, causing the first player to freeze in place. The second player then enters the stage and starts a new scene based on the pose. At some point, a third player calls “space jump”, and both players freeze. They enter and start a new scene. Repeat with the fourth player. Players exit scene in reverse order, and the original scenes resume as people leave.",
+    "lastPlayed": null,
+    "tags": ["Meta", "Replay", "Short Form"]
+  },
+  {
+    "id": "42",
+    "title": "Superheroes",
+    "minPlayers": 4,
+    "maxPlayers": 5,
+    "description": "Improvisers are given a suggestion for a world-altering situation and a superhero that doesn’t exist. The first scene begins with that character trying to solve the problem, realizing they can’t, and calling another superhero by name to help. (Ex: Doesn’t Wear Pants Man, etc). The new superhero joins the scene, then calls another hero. So on and so forth until everyone is in the scene, then they leave in the opposite order they entered. ",
+    "lastPlayed": null,
+    "tags": ["Short Form"]
+  },
+  {
+    "id": "43",
+    "title": "Taxi",
+    "minPlayers": 4,
+    "maxPlayers": 4,
+    "description": "4 chairs are set up in a square. Each player is given a character or trait, and enter the taxi one by one. Each time a new person enters, all players adopt that trait. They exit in the reverse order.",
+    "lastPlayed": null,
+    "tags": ["Physical", "Short Form"]
+  },
+  {
+    "id": "44",
+    "title": "Television",
+    "minPlayers": 2,
+    "maxPlayers": 3,
+    "description": "Players are given a suggestion, and members of the audience have the ability to change the scene like they're using a remote",
+    "lastPlayed": null,
+    "tags": ["Directed", "Audience", "Short Form"]
+  },
+  {
+    "id": "45",
+    "title": "Three Rooms",
+    "minPlayers": 6,
+    "maxPlayers": 6,
+    "description": "3 separate two person scenes are taking place in the performing area. Each scene is given a room and a suggestion, and fronter calls to switch between rooms. When scene switches, the new room must start their scene with the last line of the previous room. ",
+    "lastPlayed": null,
+    "tags": ["Meta", "Directed", "Long Form"]
+  },
+  {
+    "id": "46",
+    "title": "Town Hall",
+    "minPlayers": 6,
+    "maxPlayers": null,
+    "description": "A new law has been passed in the town, and all improvisers are concerned citizens. Fronter points to switch between all characters. When a character is pointed at, they step forward, introduce themself, and begin monologuing about their opinion on the issue. ",
+    "lastPlayed": null,
+    "tags": ["Town Hall", "All Play", "Audience"]
+  },
+  {
+    "id": "47",
+    "title": "Typewriter",
+    "minPlayers": 4,
+    "maxPlayers": 5,
+    "description": "Get a suggestion for a book title that doesn’t exist. One player will be the author of the book, and we get to see them writing the first chapter. Author will sit in a chair and narrate the events of the book while other players act out what is happening behind them.",
+    "lastPlayed": null,
+    "tags": ["Meta", "Directed" ,"Short Form"]
+  },
+  {
+    "id": "48",
+    "title": "Warp To",
+    "minPlayers": 2,
+    "maxPlayers": 3,
+    "description": "Players get a suggestion for a scene, and begin it. At any point, the fronter may call “warp to…” any time frame, event, or interaction mentioned in the scene, and the scene switches to that scene. \n\nThis reminds me of back in third grade when we had a lemonade stand. \nI remember, a raccoon came by and stole all our money! \nFronter: Warp to the lemonade stand in third grade. \n",
+    "lastPlayed": null,
+    "tags": ["Directed", "Replay", "Short Form", "Quick"]
+  },
+  {
+    "id": "49",
+    "title": "Weekend At Bernie's",
+    "minPlayers": 4,
+    "maxPlayers": 4,
+    "description": "Players do a short scene based on a suggestion. At the end of the scene, the audience votes by applause on which player they want to “kill”. That person is now dead, and the scene must repeat, with the other players puppeting arms and legs. This continues until there is one person left standing. ",
+    "lastPlayed": null,
+    "tags": ["Replay", "Physical", "Competition", "Short Form"]
+  },
+  {
+    "id": "50",
+    "title": "Wikipedia",
+    "minPlayers": 6,
+    "maxPlayers": 12,
+    "description": "Audience gives a suggestion for a Wikipedia article that doesn’t exist, and fronter sets timer for 4-5 minutes. Players form a backline, and a fronter points at one to start. They must narrate typing this Wikipedia article, being careful to avoid using opinions, stuttering, or hesitating. If someone messes up, another player can call “objection!” and explain why they messed up. Fronter either sustains or overrules the objection. If objection is overruled, original player continues writing. If objection is sustained, the objecting player steps up to continue the article. Play scene until timer runs out. ",
+    "lastPlayed": null,
+    "tags": ["Wordplay", "Competition", "Short Form"]
+  }
+]
