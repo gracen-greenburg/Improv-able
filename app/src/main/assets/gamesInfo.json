@@ -448,5 +448,77 @@
     "description": "Audience gives a suggestion for a Wikipedia article that doesn’t exist, and fronter sets timer for 4-5 minutes. Players form a backline, and a fronter points at one to start. They must narrate typing this Wikipedia article, being careful to avoid using opinions, stuttering, or hesitating. If someone messes up, another player can call “objection!” and explain why they messed up. Fronter either sustains or overrules the objection. If objection is overruled, original player continues writing. If objection is sustained, the objecting player steps up to continue the article. Play scene until timer runs out. ",
     "lastPlayed": null,
     "tags": ["Wordplay", "Competition", "Short Form"]
+  },
+  {
+    "id": "51",
+    "title": "Apocalypse",
+    "minPlayers": 4,
+    "maxPlayers": null,
+    "description": "This long form takes place in 2 parts. Get cause of apocalypse from audience suggestion. Part 1 is the eventé, or the scenes leading up to the end of the world. Part 2 is the monoscene, which takes place some time after the apocalypse. This may be a dystopian or post-apocalyptic world, where everything is turned upside down in a comedic way. ",
+    "lastPlayed": null,
+    "tags": ["Long Form", "Audience", "Narrative"]
+  },
+  {
+    "id": "52",
+    "title": "Day in the Life",
+    "minPlayers": 4,
+    "maxPlayers": null,
+    "description": "Improvisers interview an audience member about their day, then get an audience suggestion. This long form game recreates a day in the life of that audience member in ~30 minutes. Done best when one player takes on the role of the audience member, and other players act as people they interact with throughout their day. ",
+    "lastPlayed": null,
+    "tags": ["Long Form", "Audience", "Narrative"]
+  },
+  {
+    "id": "53",
+    "title": "Funeral",
+    "minPlayers": 5,
+    "maxPlayers": null,
+    "description": "Get suggestion from audience: a weird way to die. With this suggestion to work from, the first scene performed is one where someone dies in that peculiar manner. Once someone has died, the scene is wiped, and flashes forward to a funeral service. The scene is set: the deceased player center stage, lying in a “coffin”. The other players are on the back line as attendees. They take turns stepping up to the podium to begin an anecdote about the deceased character. Once they have given a short intro to the story, the scene is wiped, and is then played out live. After the scene concludes, players go back to the funeral setup, first speaker leaves, and a new one comes forward to begin an anecdote. \n\nDeath intro scene (5ish minutes, serves as a jumping off point) \nFuneral - first speaker intro their story (2ish minutes) \nPlayers act out first speaker’s story. The more actors, the better. \nFuneral - second speaker intro their story (2ish minutes) \nSo on and so forth\n",
+    "lastPlayed": null,
+    "tags": ["Long Form", "Narrative", "Meta"]
+  },
+  {
+    "id": "54",
+    "title": "La Ronde",
+    "minPlayers": 5,
+    "maxPlayers": 10,
+    "description": "This game works as a circle of 2 person scenes. In this game, each person only plays one character. Each scene is edited by one character replacing another. The person left on stage remains the same character, and the new player chooses a character, location, and situation (similar to a roundtable version of freeze). Done best when scenes can come together to make a coherent story. \n\nStart\nScene 1: Player 1 and 2 \nScene 2: Player 2 and 3\nScene 3: Player 3 and 4\nScene 4: Player 4 and 5\nScene 5: Player 5 and 6 \nScene 6: Player 6 and 7 \nScene 7: Player 7 and 1 \nEnd\n",
+    "lastPlayed": null,
+    "tags": ["Long Form", "Narrative"]
+  },
+  {
+    "id": "55",
+    "title": "Montage",
+    "minPlayers": 4,
+    "maxPlayers": 12,
+    "description": "A series of short, discordant scenes performed by all players. Can be done in sideline or back line format. A suggestion is given by the audience, and improvisers take turns jumping forward to perform a short interaction. \n\nEdits\nSwipe edits: someone runs across front of playing space, ending scene and sending players back to line.\nFreeze: someone calls freeze, then takes the place of one improviser, starting a new scene.\nDirector’s Cut: someone calls “cut”, then changes the scene by giving improvisers suggestions for improvement. \nNew choice\n",
+    "lastPlayed": null,
+    "tags": ["Long Form", "Audience", "Directed", "Meta"]
+  },
+  {
+    "id": "56",
+    "title": "Monologue",
+    "minPlayers": 4,
+    "maxPlayers": 10,
+    "description": "Standard long form game, but players are not restricted to only one player. The story is told in 3 monologues separated by several scenes. Best when each monologue is done by a different improviser. \n\nBeginning Monologue (1-2 minutes)\nRising Action (10-15 minutes) \nMiddle Monologue (1-2 minutes)\nFalling Action/Concluding Scenes (10-15 minutes) \nEnding Monologue (1-2 minutes) \n",
+    "lastPlayed": null,
+    "tags": ["Long Form", "Narrative", "Meta"]
+  },
+  {
+    "id": "57",
+    "title": "No Minor Characters",
+    "minPlayers": 4,
+    "maxPlayers": 10,
+    "description": "Long-form game in which each improviser chooses one character, and must play them the whole time. Best practice for this style of game is to follow the “hero’s journey” format. A character exiting signifies a scene change for this game. ",
+    "lastPlayed": null,
+    "tags": ["Long Form", "Narrative"]
+  },
+  {
+    "id": "58",
+    "title": "True Hollywood Stories",
+    "minPlayers": 5,
+    "maxPlayers": 10,
+    "description": "This longform follows the format of an Entertainment Network celebrity exposé. Begin by interviewing an audience member. Make sure they are comfortable answering questions and being the subject of a long form. \n\nInfo needed from audience member: \nBasic upbringing: family size, hometown, anything specific and interesting childhood events\nWhat did they always want to be when they grew up? This is important because it’s what we’re going to make them famous for. What interested them in it? \nOne thing they got in trouble for, from going to jail to getting their phone taken for staying up too late. It doesn’t matter how major of a thing it was, because we’re going to make it a big thing. This will be their tragic downfall later. \nOnce the interviewee leaves the stage, the scene begins. It opens with everyone saying, “We now present: The True Hollywood Story of _____”. The opening scenes are a combination of short narrations and talking heads clips. One player takes a seat and begins acting as someone who knew the subject personally. Similar to a documentary, they should identify themselves and say how they knew the main character, then tell an anecdote about the character. This kind of segment is called a “Talking Head”. Players take turns giving statements, tagging each other out faster and faster until it is a flurry of talking. \n\nThen, a narrator gives us an intro, such as “John Doe was fairly standard in his small town growing up. It wasn’t until he won the Zach and Cody Danimals Sweepstakes that he begin to rise to fame as a playground bully. This behavior continued for much of his early life, until he found himself the new kid at an NYC law firm, where he was suddenly the small fish in a big pond…” \n\nAfter the intro, scenes begin. A typical format may look like: \n\nInterview with audience member (3-5 minutes) \nTalking heads, narration opening (2-3 minutes) \nHumble beginnings scene (5-7 minutes) \nNarration (1 minute) \nRise to fame scene (5-7 minutes) \nNarration (1 minute) \nTragic downfall scene (7 minutes) \nConcluding narration (1 minute)\n",
+    "lastPlayed": null,
+    "tags": ["Long Form", "Audience", "Meta", "Narrative"]
   }
 ]
