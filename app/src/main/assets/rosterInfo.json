@@ -1,0 +1,62 @@
+[
+  {
+    "firstName": "Ramsey",
+    "lastName": "Albergotti",
+    "returning": true,
+    "year": 2,
+    "coreCast": true,
+    "attendance": [true, true, true],
+    "notes": ["3/27 show, fronted Pillars, performed in Party Quirks"],
+    "president": false
+  },
+  {
+    "firstName": "Joe",
+    "lastName": "Hardy",
+    "returning": true,
+    "year": 2,
+    "coreCast": false,
+    "attendance": [true, false, true],
+    "notes": ["3/27 show, performed in Oracle and Pillars. Great Heated Rivalry bit"],
+    "president": false
+  },
+  {
+    "firstName": "Will",
+    "lastName": "Hahne",
+    "returning": true,
+    "year": 2,
+    "coreCast": true,
+    "attendance": [true, true, true],
+    "notes": ["3/27 show, fronted Seance Oracle (wonderful fronting), performed in Party Quirks"],
+    "president": false
+  },
+  {
+    "firstName": "Frances",
+    "lastName": "Lang",
+    "returning": true,
+    "year": 3,
+    "coreCast": true,
+    "attendance": [true,true,false],
+    "notes": ["3/27 show, performed in Oracle and Party Quirks"],
+    "president": false
+  },
+  {
+    "firstName": "Fake",
+    "lastName": "Member",
+    "returning": false,
+    "year": 0,
+    "coreCast": false,
+    "attendance": [false, false, false, false],
+    "notes": ["Just made this one up as filler, I don't want to write all members right now. That's a later job"],
+    "president": false
+  },
+  {
+    "firstName": "Gracen",
+    "lastName": "Greenburg",
+    "returning": true,
+    "year": 3,
+    "coreCast": true,
+    "attendance": [true,true,true,true],
+    "notes": ["3/27 show, did cold open, performed in Pillars and was the host in Party Quirks"],
+    "president": true
+  }
+]

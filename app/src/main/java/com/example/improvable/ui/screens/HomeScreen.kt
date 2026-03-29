@@ -19,6 +19,7 @@ fun HomeScreen(
     // and a suggestions page
 
     // 3/26 starting small with 2 basic screens (no searching yet)
+    // 3/29 implemented search on games screen
     onNavigateToWarmups: () -> Unit,
     onNavigateToGames: () -> Unit,
     onNavigateToLeadership: () -> Unit,
@@ -43,10 +44,6 @@ fun HomeScreen(
         }
 
         Spacer(modifier = Modifier.height(16.dp))
-
-        Button(onClick = onNavigateToSearch) {
-            Text("Search")
-        }
 
         Spacer(modifier = Modifier.height(16.dp))
 
