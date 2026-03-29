@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import com.example.improvable.ui.screens.GamesScreen
 import com.example.improvable.ui.screens.HomeScreen
 import com.example.improvable.ui.screens.WarmupsScreen
-import com.example.improvable.ui.screens.* // IMPORT THE FOLDER INSTEAD
+
 @Composable
 fun NavGraph(navController: NavHostController) {
     NavHost(
@@ -24,7 +24,6 @@ fun NavGraph(navController: NavHostController) {
             HomeScreen(
                 onNavigateToWarmups = { navController.navigate("warmups") },
                 onNavigateToGames = { navController.navigate("games") },
-                onNavigateToSearch = { navController.navigate("search") },
                 onNavigateToLeadership = { navController.navigate("leadership") },
                 onNavigateToRoster = { navController.navigate("roster") },
                 onNavigateToRecording = { navController.navigate("recording") },
@@ -39,13 +38,6 @@ fun NavGraph(navController: NavHostController) {
         }
         composable("games") { // eventually will have list (SCROLLABLE), search function
             GamesScreen(              // NOTE FOR LATER:::: do a tag system so they can filter by tags
-                onNavigateBack = {
-                    navController.popBackStack()
-                }
-            )
-        }
-        composable("search") {
-            SearchScreen(
                 onNavigateBack = {
                     navController.popBackStack()
                 }
@@ -79,7 +71,6 @@ fun NavGraph(navController: NavHostController) {
 fun HomeScreen( // starting with three basic screens to get into the flow
     onNavigateToWarmups: () -> Unit,
     onNavigateToGames: () -> Unit,
-    onNavigateToSearch: () -> Unit,  // adding more screens 3/26
     onNavigateToLeadership: () -> Unit,
     onNavigateToRoster: () -> Unit,
     onNavigateToSuggestions: () -> Unit) {
@@ -94,9 +85,6 @@ fun HomeScreen( // starting with three basic screens to get into the flow
         }
         Button(onClick = onNavigateToGames) {
             Text(text = "Go to GAMEs")
-        }
-        Button(onClick = onNavigateToSearch) {
-            Text(text = "Search Screen of my dreams")
         }
         Button(onClick = onNavigateToLeadership) {
             Text(text = "Leader screen info and such")
@@ -136,18 +124,18 @@ fun GamesScreen(onNavigateBack: () -> Unit) {
     }
 }
 
-@Composable
-fun SearchScreen(onNavigateBack: () -> Unit) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = "Oh I'm searching it I'm searching it")
-        Button(onClick = onNavigateBack) {
-            Text(text = "Back")
-        }
-    }
-}
+//@Composable --> going to remove search screen, it can be accomplished with just games screen.
+//fun SearchScreen(onNavigateBack: () -> Unit) {
+//    Column(
+//        modifier = Modifier.fillMaxSize(),
+//        horizontalAlignment = Alignment.CenterHorizontally
+//    ) {
+//        Text(text = "Oh I'm searching it I'm searching it")
+//        Button(onClick = onNavigateBack) {
+//            Text(text = "Back")
+//        }
+//    }
+//}
 
 @Composable
 fun LeadershipScreen(onNavigateBack: () -> Unit) {

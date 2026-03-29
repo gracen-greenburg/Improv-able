@@ -21,7 +21,6 @@ fun HomeScreen(
     // 3/26 starting small with 2 basic screens (no searching yet)
     onNavigateToWarmups: () -> Unit,
     onNavigateToGames: () -> Unit,
-    onNavigateToSearch: () -> Unit,
     onNavigateToLeadership: () -> Unit,
     onNavigateToRoster: () -> Unit,
     onNavigateToRecording: () -> Unit,
