@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import com.example.improvable.ui.screens.GamesScreen
 import com.example.improvable.ui.screens.HomeScreen
+import com.example.improvable.ui.screens.RosterScreen
 import com.example.improvable.ui.screens.WarmupsScreen
 
 @Composable
@@ -150,19 +151,19 @@ fun LeadershipScreen(onNavigateBack: () -> Unit) {
     }
 }
 
-@Composable
-fun RosterScreen(onNavigateBack: () -> Unit) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = "Here we're going to have a scrollable addable list of people with like " +
-                "\n checkmarks to mark presence, easy adding \n screen, and it is kept as data")
-        Button(onClick = onNavigateBack) {
-            Text(text = "Back")
-        }
-    }
-}
+//@Composable --. commented out vcbc it wouldn't let the updated screen work
+//fun RosterScreen(onNavigateBack: () -> Unit) {
+//    Column(
+//        modifier = Modifier.fillMaxSize(),
+//        horizontalAlignment = Alignment.CenterHorizontally
+//    ) {
+//        Text(text = "Here we're going to have a scrollable addable list of people with like " +
+//                "\n checkmarks to mark presence, easy adding \n screen, and it is kept as data")
+//        Button(onClick = onNavigateBack) {
+//            Text(text = "Back")
+//        }
+//    }
+//}
 
 @Composable
 fun SuggestionsScreen(onNavigateBack: () -> Unit) {

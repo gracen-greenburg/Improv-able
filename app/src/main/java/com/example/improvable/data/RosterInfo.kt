@@ -1,6 +1,10 @@
 package com.example.improvable.data
 
+import kotlinx.serialization.InternalSerializationApi
+import kotlinx.serialization.Serializable
 
+@OptIn(InternalSerializationApi::class) // worked for games, it'll work for this
+@Serializable
 // the basis of our roster
 data class RosterInfo (
     val firstName: String,
