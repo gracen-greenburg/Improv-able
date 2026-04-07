@@ -1,0 +1,128 @@
+[
+  {
+    "id": "w1",
+    "title": "Yeah!",
+    "minPlayers": 4,
+    "maxPlayers": null,
+    "description": "Improvisers go around the circle sharing something that happened in their day. Regardless of whether it is good, bad, or neutral, the group responds with enthusiastic agreement by yelling “YEAH!” as if it is exciting news.",
+    "lastPlayed": null,
+    "tags": ["Audience", "Quick", "Replay", "Physical", "Town Hall"]
+  },
+  {
+    "id": "w2",
+    "title": "Give Me Seven",
+    "minPlayers": 4,
+    "maxPlayers": null,
+    "description": "Improvisers go around circle asking next person to give them seven items in a specific category. These seven items don’t have to have anything to do with the category, the goal is just to think of things quickly! ",
+    "lastPlayed": null,
+    "tags": ["Quick", "Wordplay", "Guessing", "Audience"]
+  },
+  {
+    "id": "w3",
+    "title": "Kitty Cat Careers",
+    "minPlayers": 3,
+    "maxPlayers": null,
+    "description": "Improviser must pantomime doing a job as if they were a cat! No words allowed, just meows. Other improvisers guess what career they have, and whoever gets it right must go next. \n\n",
+    "lastPlayed": null,
+    "tags": ["Physical", "Guessing", "Wordplay", "Audience"]
+  },
+  {
+    "id": "w4",
+    "title": "The House",
+    "minPlayers": 4,
+    "maxPlayers": null,
+    "description": "Get a suggestion for a room in a house. Improvisers take turns adding one object to the room. For every new person who comes in to add an object, they must interact with every other object previously placed. Words can’t be used to describe an object, but sounds can be used. Try to interact with every object in the exact place it was left. Best for smaller groups. ",
+    "lastPlayed": null,
+    "tags": ["Physical", "Directed", "Replay", "Audience"]
+  },
+  {
+    "id": "w5",
+    "title": "Sad, Mad, Glad",
+    "minPlayers": 4,
+    "maxPlayers": null,
+    "description": "Form 2 lines, the Starters and the Responders. Improviser from the Starters line begins a 2 line scene with a Responder. Starter line must not be a question, it must be boring and devoid of emotion. Responder chooses sad, mad, or glad, and must respond in one line with that emotion. ",
+    "lastPlayed": null,
+    "tags": ["Short Form", "Directed", "Quick", "Wordplay"]
+  },
+  {
+    "id": "w6",
+    "title": "Question, Answer, Question",
+    "minPlayers": 4,
+    "maxPlayers": null,
+    "description": "Form 2 lines, the Starters and the Responders. Improviser from the Starters line begins a 2 line scene with a Responder. Starter line must be a question. Responder line cannot be a question. Starter then responds one more time with a follow-up question, then scene ends. ",
+    "lastPlayed": null,
+    "tags": ["Wordplay", "Quick", "Directed"]
+  },
+  {
+    "id": "w7",
+    "title": "Big Booty",
+    "minPlayers": 6,
+    "maxPlayers": null,
+    "description": "Stand in a circle. One improviser will be Big Booty, the person immediately to their right will be Little Booty. Number off all improvisers clockwise from Big Booty. Then, start chant. \n\nAh Big Booty\nBig Booty Ah Yeah\nBig Booty Big Booty Big Booty \nBig Booty number…___\nNumber ___ number ___\nAnd so on\n\nIf someone messes up, doesn’t respond, or hesitates, they are OUTTA THERE! That person goes to number one, and everyone else moves up.\n",
+    "lastPlayed": null,
+    "tags": ["Competition", "Physical", "Quick", "Replay", "Audience"]
+  },
+  {
+    "id": "w8",
+    "title": "Milking the Milk",
+    "minPlayers": 4,
+    "maxPlayers": null,
+    "description": "Stand in a circle and pick one improviser to start. There are 3 options for a move: Milking the Milk, Drinking the Milk, Woeing the Milk, and Washing the Milk. Starter turns to the person next to them, and both simultaneously pick a move at random. Improvisers call out the move as they mime it. If move is the same, direction switches, and starter turns to the improviser to their other side. If move is different, play continues in the same direction. ",
+    "lastPlayed": null,
+    "tags": ["Physical", "Quick", "Competition"]
+  },
+  {
+    "id": "w9",
+    "title": "Hey Fred Schneider, What Are You Doing?",
+    "minPlayers": 4,
+    "maxPlayers": null,
+    "description": "Pick a starter. They will pantomime doing an activity (i.e. grocery shopping, playing baseball, etc). Other improvisers chant in cadence, “Hey Fred Schneider, what are you doing?” (emulating the B-52s singer Fred Schneider). Starter then responds in cadence by describing what activity they’re doing. \n",
+    "lastPlayed": null,
+    "tags": ["Musical", "Physical", "Wordplay", "Audience"]
+  },
+  {
+    "id": "w10",
+    "title": "No, You’re Thinking Of",
+    "minPlayers": 3,
+    "maxPlayers": null,
+    "description": "Get a suggestion for a 1 syllable starting word, such as bake. Starting improviser thinks of a rhyming word, and describes it. Next improviser says, “No no, that’s ___. You’re thinking of ___.” and describes another rhyming word, so on until next improviser can’t think of anything",
+    "lastPlayed": null,
+    "tags": ["Wordplay", "Quick", "Guessing"]
+  },
+  {
+    "id": "w11",
+    "title": "Little Red Wagon",
+    "minPlayers": 4,
+    "maxPlayers": null,
+    "description": "Stand in a circle and pick one improviser to start. Starter leads the song. First verse is normal, but next improviser picks an accent, volume, or character to switch the song to. \n\nYou can’t ride in my little red wagon\nCause the front seat’s broken and the axle’s draggin’ \nHoo ha, hoo ha ha\nHoo ha, hoo ha ha\nSecond verse, same as the first\nBut a little bit _____ and a little bit worse! \n",
+    "lastPlayed": null,
+    "tags": ["Musical", "Physical", "Replay", "Audience"]
+  },
+  {
+    "id": "w12",
+    "title": "Thank You Red Ball",
+    "minPlayers": 5,
+    "maxPlayers": null,
+    "description": "Stand in a circle and pick one improviser to be the lead. The lead introduces a small red ball, and shows everyone the proper way to pass it around. Passer asks “Red ball?”, receiver says “Thank you red ball.”, passer says “Red ball.” and gives it to receiver. Over time, lead introduces more items, such as “sleeping baby”, “bag of cats”, etc, and shows everyone the proper ways to pass them. Lead slowly removes items as everything is being simultaneously passed. ",
+    "lastPlayed": null,
+    "tags": ["Physical", "Replay", "Audience"]
+  },
+  {
+    "id": "w13",
+    "title": "The Machine",
+    "minPlayers": 3,
+    "maxPlayers": null,
+    "description": "Get a suggestion for a type of machine. One person begins, pantomiming the function of a part and making a sound. Players take turns adding to the machine as different components until everyone is a part of the same machine. ",
+    "lastPlayed": null,
+    "tags": ["Physical", "Replay", "Audience"]
+  },
+  {
+    "id": "w14",
+    "title": "Try That On For Size",
+    "minPlayers": 2,
+    "maxPlayers": 2,
+    "description": "2 players stand back to back. One player turns around while doing an action. The player not moving asks what they’re doing, and they have to justify their action, ending with “try that on for size”. ",
+    "lastPlayed": null,
+    "tags": ["Directed", "Short Form", "Wordplay"]
+  }
+]
