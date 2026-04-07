@@ -17,5 +17,4 @@ data class RosterInfo (
     val attendance: List<Boolean> = emptyList(), // List of whether they attended practice or not
             // with attendance, we can make it a percentage, see how frequent people are attending practice
     val notes: List<String> = emptyList(), // leader can give notes
-    val president: Boolean // if president, then can give notes and edit roster
 )

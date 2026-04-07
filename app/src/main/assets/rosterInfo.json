@@ -6,8 +6,7 @@
     "year": 2,
     "coreCast": true,
     "attendance": [true, true, true],
-    "notes": ["3/27 show, fronted Pillars, performed in Party Quirks"],
-    "president": false
+    "notes": ["3/27 show, fronted Pillars, performed in Party Quirks"]
   },
   {
     "firstName": "Joe",
@@ -16,8 +15,7 @@
     "year": 2,
     "coreCast": false,
     "attendance": [true, false, true],
-    "notes": ["3/27 show, performed in Oracle and Pillars. Great Heated Rivalry bit"],
-    "president": false
+    "notes": ["3/27 show, performed in Oracle and Pillars. Great Heated Rivalry bit"]
   },
   {
     "firstName": "Will",
@@ -26,8 +24,7 @@
     "year": 2,
     "coreCast": true,
     "attendance": [true, true, true],
-    "notes": ["3/27 show, fronted Seance Oracle (wonderful fronting), performed in Party Quirks"],
-    "president": false
+    "notes": ["3/27 show, fronted Seance Oracle (wonderful fronting), performed in Party Quirks"]
   },
   {
     "firstName": "Frances",
@@ -36,8 +33,7 @@
     "year": 3,
     "coreCast": true,
     "attendance": [true,true,false],
-    "notes": ["3/27 show, performed in Oracle and Party Quirks"],
-    "president": false
+    "notes": ["3/27 show, performed in Oracle and Party Quirks"]
   },
   {
     "firstName": "Fake",
@@ -46,8 +42,7 @@
     "year": 0,
     "coreCast": false,
     "attendance": [false, false, false, false],
-    "notes": ["Just made this one up as filler, I don't want to write all members right now. That's a later job"],
-    "president": false
+    "notes": ["Just made this one up as filler, I don't want to write all members right now. That's a later job"]
   },
   {
     "firstName": "Gracen",
@@ -56,7 +51,6 @@
     "year": 3,
     "coreCast": true,
     "attendance": [true,true,true,true],
-    "notes": ["3/27 show, did cold open, performed in Pillars and was the host in Party Quirks"],
-    "president": true
+    "notes": ["3/27 show, did cold open, performed in Pillars and was the host in Party Quirks"]
   }
 ]
