@@ -1,0 +1,24 @@
+[
+  {
+    "scenes": [
+      {
+        "gameID": "1",
+        "date": 1775658817,
+        "playerIDs": ["1", "2", "3"],
+        "notes": "Good game!",
+        "thumbnailPath": "",
+        "recording": ""
+      },
+      {
+        "gameID": "3",
+        "date": 1775659143,
+        "playerIDs": ["2", "4", "3"],
+        "notes": "Bad game!",
+        "thumbnailPath": "",
+        "recording": ""
+      }
+    ],
+    "date": 1775658807,
+    "notes": "Good practice!"
+  }
+]

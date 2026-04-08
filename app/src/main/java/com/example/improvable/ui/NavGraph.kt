@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import com.example.improvable.ui.screens.GamesScreen
 import com.example.improvable.ui.screens.HomeScreen
 import com.example.improvable.ui.screens.RosterScreen
+import com.example.improvable.ui.screens.SessionsScreen
 import com.example.improvable.ui.screens.WarmupsScreen
 
 @Composable
@@ -28,7 +29,8 @@ fun NavGraph(navController: NavHostController) {
                 onNavigateToLeadership = { navController.navigate("leadership") },
                 onNavigateToRoster = { navController.navigate("roster") },
                 onNavigateToRecording = { navController.navigate("recording") },
-                onNavigateToSuggestions = { navController.navigate("suggestions")}
+                onNavigateToSuggestions = { navController.navigate("suggestions")},
+                onNavigateToSessions = { navController.navigate("sessions")}
             )
         }
         composable("warmups") { // screen where we give warm up ideas // structure
@@ -60,6 +62,13 @@ fun NavGraph(navController: NavHostController) {
         }
         composable("suggestions") {
             SuggestionsScreen(
+                onNavigateBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+        composable("sessions") {
+            SessionsScreen(
                 onNavigateBack = {
                     navController.popBackStack()
                 }
