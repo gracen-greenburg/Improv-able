@@ -1,7 +1,5 @@
 package com.example.improvable.data
 
-// Joe Hardy
-
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.Serializable
 

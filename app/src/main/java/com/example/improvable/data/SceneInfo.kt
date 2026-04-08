@@ -1,7 +1,5 @@
 package com.example.improvable.data
 
-// Joe Hardy
-
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.Serializable
 
@@ -10,10 +8,10 @@ import kotlinx.serialization.Serializable
 
 // Data for a single scene.
 data class SceneInfo (
-    val game: GamesInfo,
+    val game: GamesInfo? = null,
     val date: Long, // timestamp
-    val players: List<RosterInfo>,
+    val players: List<RosterInfo>? = listOf(),
     val notes: String,
-    val thumnail_path: String, //path to image file for this scene.
+    val thumbnailPath: String, //path to image file for this scene.
     val recording: String, //path to mp3 file for this scene.
 )

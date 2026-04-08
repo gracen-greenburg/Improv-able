@@ -1,5 +1,6 @@
 package com.example.improvable.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -22,6 +23,7 @@ fun HomeScreen(
     // 3/29 implemented search on games screen
     onNavigateToWarmups: () -> Unit,
     onNavigateToGames: () -> Unit,
+    onNavigateToSessions: () -> Unit,
     onNavigateToLeadership: () -> Unit,
     onNavigateToRoster: () -> Unit,
     onNavigateToRecording: () -> Unit,
@@ -41,6 +43,12 @@ fun HomeScreen(
 
         Button(onClick = onNavigateToGames) {
             Text("Games")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(onClick = onNavigateToSessions) {
+            Text("Sessions")
         }
 
         Spacer(modifier = Modifier.height(16.dp))
