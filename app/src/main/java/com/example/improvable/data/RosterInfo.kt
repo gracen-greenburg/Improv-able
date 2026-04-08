@@ -14,7 +14,8 @@ data class RosterInfo (
     //val gamesPlayed: List<String> = emptyList(), // list of games plus practice date --> LATER
     // --> maybe this should be attached to the game itself
     val coreCast: Boolean, // are they on core cast
-    val attendance: List<Boolean> = emptyList(), // List of whether they attended practice or not
+    // 4/8 update -- removing attendance, we don't really utilize it
+    // val attendance: List<Boolean> = emptyList(), // List of whether they attended practice or not
             // with attendance, we can make it a percentage, see how frequent people are attending practice
     val notes: List<String> = emptyList(), // leader can give notes
 )

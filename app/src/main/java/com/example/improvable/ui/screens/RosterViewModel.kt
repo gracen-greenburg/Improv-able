@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import java.io.File
 
-
+// 4/8 update -- Unclear how we are going to implememnt roster. Meeting to clear things up
 // This class is v similar to GamesViewModel, trying to read the json fiel
 class RosterViewModel(private val context: Context) : ViewModel() {
     private val _roster = MutableStateFlow<List<RosterInfo>>(emptyList())
@@ -42,16 +42,17 @@ class RosterViewModel(private val context: Context) : ViewModel() {
 
 
     // marks and updates attendance for each person
-    fun markAttendance(index: Int, isPresent: Boolean) {
-        val currentRoster = _roster.value.toMutableList()
-        if (index in currentRoster.indices) {
-            val person = currentRoster[index]
-            val updatedAttendance = person.attendance.toMutableList()
-            updatedAttendance.add(isPresent)
-            currentRoster[index] = person.copy(attendance = updatedAttendance)
-            _roster.value = currentRoster
-        }
-    }
+    // As of 4/8 no longer taking attendance
+//    fun markAttendance(index: Int, isPresent: Boolean) {
+//        val currentRoster = _roster.value.toMutableList()
+//        if (index in currentRoster.indices) {
+//            val person = currentRoster[index]
+//            val updatedAttendance = person.attendance.toMutableList()
+//            updatedAttendance.add(isPresent)
+//            currentRoster[index] = person.copy(attendance = updatedAttendance)
+//            _roster.value = currentRoster
+//        }
+//    }
 
         fun saveRoster() {
             viewModelScope.launch {

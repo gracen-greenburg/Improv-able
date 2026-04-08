@@ -48,27 +48,28 @@ fun RosterScreen(onNavigateBack: () -> Unit, // same thing as gameScreen
     ) {
         // make the text look prettier later, figure this out now
         Text(text = "Roster Attendance", style = MaterialTheme.typography.headlineMedium)
-        LazyColumn(
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth()
-                .padding(top = 16.dp)
-        ) {
-            itemsIndexed(roster) { index, person ->
-                RosterMemberItem(
-                    person = person,
-                    onAttendanceToggled = { isPresent ->
-                        viewModel.markAttendance(index, isPresent)
-                    }
-                )
-                HorizontalDivider() // should we keep this
-            }
-        }
+//        LazyColumn(
+//            modifier = Modifier
+//                .weight(1f)
+//                .fillMaxWidth()
+//                .padding(top = 16.dp)
+//        )
+//        {
+//            itemsIndexed(roster) { index, person ->
+//                RosterMemberItem(
+//                    person = person,
+//                    onAttendanceToggled = { isPresent ->
+//                        viewModel.markAttendance(index, isPresent)
+//                    }
+//                )
+//                HorizontalDivider() // should we keep this
+//            }
+//        }
         // keep navigation back
         Column(modifier = Modifier.padding(top = 16.dp)) {
-            Button(onClick = { viewModel.saveRoster() }, modifier = Modifier.padding(end = 8.dp)) {
-                Text(text = "Save Attendance")
-            }
+//            Button(onClick = { viewModel.saveRoster() }, modifier = Modifier.padding(end = 8.dp)) {
+//                Text(text = "Save Attendance")
+//            }
             Button(onClick = onNavigateBack) {
                 Text(text = "Back")
             }
@@ -79,7 +80,7 @@ fun RosterScreen(onNavigateBack: () -> Unit, // same thing as gameScreen
 @Composable
 fun RosterMemberItem(
     person: RosterInfo,
-    onAttendanceToggled: (Boolean) -> Unit // ARE THEY PRESENT
+    //onAttendanceToggled: (Boolean) -> Unit
 ) {
     var checked by remember { mutableStateOf(false) } // if not clicked --> false
     Row(
@@ -90,20 +91,22 @@ fun RosterMemberItem(
     ) {
         Column(modifier = Modifier.weight(1f)) {
             Text(text = "${person.firstName} ${person.lastName}", style = MaterialTheme.typography.titleMedium)
-            Text(
-                text = "Attendance: ${person.attendance.count { it }}/${person.attendance.size}",
-                style = MaterialTheme.typography.bodySmall
-            )
+//            Text(
+//               // text = "Attendance: ${person.attendance.count { it }}/${person.attendance.size}",
+//                style = MaterialTheme.typography.bodySmall
+//            )
         }
-        Checkbox( // can be clicked --> when clicked, then present
-            checked = checked,
-            onCheckedChange = {
-                checked = it // it keyword
-                if (it) {
-                    //box clicked --> bool flipped --> default false --> true
-                    onAttendanceToggled(true)
-                }
-            }
-        )
+
+        // NOT DOING ATTENDANCE ANYMORE
+//        Checkbox( // can be clicked --> when clicked, then present
+//            checked = checked,
+//            onCheckedChange = {
+//                checked = it // it keyword
+//                if (it) {
+//                    //box clicked --> bool flipped --> default false --> true
+//                   // onAttendanceToggled(true)
+//                }
+//            }
+//        )
     }
 }
