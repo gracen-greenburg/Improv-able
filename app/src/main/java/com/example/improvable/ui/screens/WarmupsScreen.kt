@@ -26,8 +26,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.ParagraphStyle
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextIndent
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.improvable.data.WarmupGamesInfo
 
@@ -47,6 +54,47 @@ fun WarmupsScreen(
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        val whooshElements = listOf( // list of whoosh elements
+            "Whoosh",
+            "Ninja Star",
+            "Give me an Impression of..",
+            "Rupert",
+            "Jumbalayah",
+            "Get Out Me Pub",
+            "Zip Zap Zop variations",
+            "Give me X variations"
+        )
+
+        Text(
+            // https://developer.android.com/reference/kotlin/androidx/compose/ui/text/AnnotatedString.Builder
+            text = buildAnnotatedString {
+                withStyle(style = SpanStyle(
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 30.sp,
+                    color = MaterialTheme.colorScheme.primary
+                )) {
+                    append("Warmups\n\n")
+                }
+                
+                append("Start with a classic game of Whoosh, involving any of the following elements:\n")
+
+                // https://www.compart.com/en/unicode/U+2022 --> found ucode for a bullet point
+                val bullet = "\u2022"
+                whooshElements.forEach { element ->
+                    withStyle(style = ParagraphStyle(
+                        textIndent = TextIndent(firstLine = 30.sp, restLine = 28.sp)
+                    )) {
+                        append(bullet)
+                        append("\t")
+                        append(element)
+                    }
+                }
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 16.dp)
+        )
+
         OutlinedTextField(
             value = searchText,
             onValueChange = viewModel::onSearchTextChange, // CHANGE ON VALUE
