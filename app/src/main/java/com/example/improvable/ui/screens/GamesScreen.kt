@@ -5,6 +5,8 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.VisibilityThreshold
 import androidx.compose.animation.core.spring
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.clickable
@@ -30,6 +32,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import androidx.compose.material3.Icon // FOR THE ADD BUTTON
+import androidx.compose.material3.IconButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.improvable.data.GamesInfo
 
@@ -64,7 +70,13 @@ fun GamesScreen( // adding the viewmodel so we can change screen
                 .padding(top = 16.dp)
         ) {
             items(filteredGames) { game ->
-                GameItem(game)
+                // 4/8 --> making an add to session thing
+                GameItem(
+                    game,
+                    onAddToSession = {
+                        // IMPLEMENT LOGIC TO OPEN PLAYERS AND ADD TO SESH
+                    }
+                )
                 HorizontalDivider()
             }
         }
@@ -77,15 +89,36 @@ fun GamesScreen( // adding the viewmodel so we can change screen
 
 // used https://composeexamples.com/components/application-ui/components/accordions for guidance
 @Composable // DISPLAY GAME INFORMATION
-fun GameItem(game: GamesInfo) { // pulling from json file
+fun GameItem(
+    game: GamesInfo,   // pulling from json file
+    onAddToSession: () -> Unit // 4/8 adding addtosession stuff
+    ) {
     var expanded = remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp)
             .clickable{expanded.value = expanded.value.not()}
-    ) {
-        Text(text = game.title, style = MaterialTheme.typography.titleLarge)
+    ) { // 4/8 --> adding a plus button to the game so we can add to session?
+       // Text(text = game.title, style = MaterialTheme.typography.titleLarge)
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text( // game title text
+                text = game.title,
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.weight(1f)
+            )
+            IconButton(onClick = onAddToSession) {
+                Icon(
+                    imageVector = Icons.Default.Add, // BUILT IN ADD BUTTON
+                    contentDescription = "Add to Session",
+                    tint = MaterialTheme.colorScheme.primary // with our color scheme --> implement this further
+                )
+            }
+        }
     }
     AnimatedVisibility(
         visible = expanded.value,
