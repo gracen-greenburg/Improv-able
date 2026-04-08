@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 
 // Data for a session, which includes many scenes.
 data class SessionInfo (
-    val scenes : List<SceneInfo>?,
+    val scenes : List<SceneInfo>,
     val date: Long, // timestamp
     val notes: String,
 )
