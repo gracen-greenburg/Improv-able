@@ -103,7 +103,15 @@ fun GameItem(game: GamesInfo) { // pulling from json file
                 .fillMaxWidth()
                 .padding(vertical = 8.dp)
         ) {
-            Text(text = "Players: ${game.minPlayers}${if (game.maxPlayers != null) " - ${game.maxPlayers}" else "+"}")
+            //display the number of players differently based on if the number is a range, single value, or minimum.
+            var playerCountText = "Players: ${game.minPlayers}"
+            if (game.maxPlayers == null) {
+                playerCountText += "+"
+            } else if (game.minPlayers != game.maxPlayers) {
+                playerCountText += " - ${game.maxPlayers}"
+            }
+            Text(text = playerCountText)
+            // display the game's description.
             Text(text = game.description, style = MaterialTheme.typography.bodyMedium)
             if (game.tags.isNotEmpty()) {
                 Text(
