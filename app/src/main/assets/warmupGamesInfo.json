@@ -1,6 +1,6 @@
 [
   {
-    "id": "w1",
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d401",
     "title": "Yeah!",
     "minPlayers": 4,
     "maxPlayers": null,
@@ -9,7 +9,7 @@
     "tags": ["Audience", "Quick", "Replay", "Physical", "Town Hall"]
   },
   {
-    "id": "w2",
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d402",
     "title": "Give Me Seven",
     "minPlayers": 4,
     "maxPlayers": null,
@@ -18,7 +18,7 @@
     "tags": ["Quick", "Wordplay", "Guessing", "Audience"]
   },
   {
-    "id": "w3",
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d403",
     "title": "Kitty Cat Careers",
     "minPlayers": 3,
     "maxPlayers": null,
@@ -27,7 +27,7 @@
     "tags": ["Physical", "Guessing", "Wordplay", "Audience"]
   },
   {
-    "id": "w4",
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d404",
     "title": "The House",
     "minPlayers": 4,
     "maxPlayers": null,
@@ -36,7 +36,7 @@
     "tags": ["Physical", "Directed", "Replay", "Audience"]
   },
   {
-    "id": "w5",
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d405",
     "title": "Sad, Mad, Glad",
     "minPlayers": 4,
     "maxPlayers": null,
@@ -45,7 +45,7 @@
     "tags": ["Short Form", "Directed", "Quick", "Wordplay"]
   },
   {
-    "id": "w6",
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d406",
     "title": "Question, Answer, Question",
     "minPlayers": 4,
     "maxPlayers": null,
@@ -54,7 +54,7 @@
     "tags": ["Wordplay", "Quick", "Directed"]
   },
   {
-    "id": "w7",
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d407",
     "title": "Big Booty",
     "minPlayers": 6,
     "maxPlayers": null,
@@ -63,7 +63,7 @@
     "tags": ["Competition", "Physical", "Quick", "Replay", "Audience"]
   },
   {
-    "id": "w8",
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d408",
     "title": "Milking the Milk",
     "minPlayers": 4,
     "maxPlayers": null,
@@ -72,7 +72,7 @@
     "tags": ["Physical", "Quick", "Competition"]
   },
   {
-    "id": "w9",
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d409",
     "title": "Hey Fred Schneider, What Are You Doing?",
     "minPlayers": 4,
     "maxPlayers": null,
@@ -81,7 +81,7 @@
     "tags": ["Musical", "Physical", "Wordplay", "Audience"]
   },
   {
-    "id": "w10",
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d410",
     "title": "No, You’re Thinking Of",
     "minPlayers": 3,
     "maxPlayers": null,
@@ -90,7 +90,7 @@
     "tags": ["Wordplay", "Quick", "Guessing"]
   },
   {
-    "id": "w11",
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d411",
     "title": "Little Red Wagon",
     "minPlayers": 4,
     "maxPlayers": null,
@@ -99,7 +99,7 @@
     "tags": ["Musical", "Physical", "Replay", "Audience"]
   },
   {
-    "id": "w12",
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d412",
     "title": "Thank You Red Ball",
     "minPlayers": 5,
     "maxPlayers": null,
@@ -108,7 +108,7 @@
     "tags": ["Physical", "Replay", "Audience"]
   },
   {
-    "id": "w13",
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d413",
     "title": "The Machine",
     "minPlayers": 3,
     "maxPlayers": null,
@@ -117,7 +117,7 @@
     "tags": ["Physical", "Replay", "Audience"]
   },
   {
-    "id": "w14",
+    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d414",
     "title": "Try That On For Size",
     "minPlayers": 2,
     "maxPlayers": 2,

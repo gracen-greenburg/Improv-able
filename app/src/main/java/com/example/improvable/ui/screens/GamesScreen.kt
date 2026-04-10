@@ -13,6 +13,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -36,18 +37,31 @@ import androidx.compose.material3.Icon // FOR THE ADD BUTTON
 import androidx.compose.material3.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Checkbox
+import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.improvable.data.GamesInfo
+import com.example.improvable.data.RosterInfo
 
 @Composable
 fun GamesScreen( // adding the viewmodel so we can change screen
     onNavigateBack: () -> Unit,
     viewModel: GamesViewModel = viewModel(
         factory = GamesViewModel.Factory(LocalContext.current) // factrory for viewmodel
+    ),
+    // 4/8 implementation, adding so we can see players and add to session
+    rosterViewModel: RosterViewModel = viewModel(
+        factory = RosterViewModel.Factory(LocalContext.current)
     )
 ) {
     val searchText by viewModel.searchText.collectAsState() //searching by name
     val filteredGames by viewModel.filteredGames.collectAsState() // resulting list of games after filter
+    // 4/8 adding so we can add players
+    val roster by rosterViewModel.roster.collectAsState()
+
+    var showPlayerPicker by remember { mutableStateOf(false) } // pick players in game
+    var gameToAddToSession by remember { mutableStateOf<GamesInfo?>(null) } // add the game to sesh
 
     Column(
         modifier = Modifier
@@ -75,6 +89,8 @@ fun GamesScreen( // adding the viewmodel so we can change screen
                     game,
                     onAddToSession = {
                         // IMPLEMENT LOGIC TO OPEN PLAYERS AND ADD TO SESH
+                        gameToAddToSession = game
+                        showPlayerPicker = true
                     }
                 )
                 HorizontalDivider()
@@ -84,6 +100,18 @@ fun GamesScreen( // adding the viewmodel so we can change screen
         Button(onClick = onNavigateBack, modifier = Modifier.padding(top = 16.dp)) {
             Text(text = "Back") // we can still click back
         }
+    }
+
+    //
+    if (showPlayerPicker && gameToAddToSession != null) {
+        PlayerSelectionDialog(
+            roster = roster,
+            onDismiss = { showPlayerPicker = false }, // dismiss --> don't worry aboyt player session
+            onConfirm = { selectedPlayers ->
+                // NEED TO ADD LOGIC TO ADD TO SESSION
+                showPlayerPicker = false
+            }
+        )
     }
 }
 
@@ -98,7 +126,7 @@ fun GameItem(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp)
-            .clickable{expanded.value = expanded.value.not()}
+            .clickable { expanded.value = expanded.value.not() }
     ) { // 4/8 --> adding a plus button to the game so we can add to session?
        // Text(text = game.title, style = MaterialTheme.typography.titleLarge)
         Row(
@@ -155,4 +183,72 @@ fun GameItem(
             }
         }
     }
+}
+
+// 4/8 ADDING PLAYER SELECTION DIALOGue
+@Composable
+fun PlayerSelectionDialog(
+    roster: List<RosterInfo>,
+    onDismiss: () -> Unit,
+    onConfirm: (List<RosterInfo>) -> Unit
+) {
+    val selectedPlayers = remember { mutableStateListOf<RosterInfo>() }
+
+    // https://developer.android.com/develop/ui/views/components/dialogs ref
+    // the vision is that it is a pop up, you checkbox the players playing and add them and submit,
+    // they're added to the sesh and then you get transported to the session screen (?)
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Select Players") },
+        text = {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                if (roster.isEmpty()) {
+                    Text(
+                        text = "No players found in roster",
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                } else {
+                    LazyColumn(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .heightIn(max = 400.dp)
+                    ) {
+                        items(roster) { person ->
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clickable {
+                                        if (selectedPlayers.contains(person)) {
+                                            selectedPlayers.remove(person)
+                                        } else {
+                                            selectedPlayers.add(person)
+                                        }
+                                    }
+                                    .padding(vertical = 8.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Checkbox(
+                                    checked = selectedPlayers.contains(person),
+                                    onCheckedChange = null // Click handled by Row
+                                )
+                                Text(
+                                    text = "${person.firstName} ${person.lastName}",
+                                    modifier = Modifier.padding(start = 8.dp),
+                                    style = MaterialTheme.typography.bodyLarge
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            Button(onClick = { onConfirm(selectedPlayers.toList()) }) { Text("Add to Session") }
+        },
+        dismissButton = { // get rid of the alert popup
+            Button(onClick = onDismiss) {
+                Text("Cancel")
+            }
+        }
+    )
 }

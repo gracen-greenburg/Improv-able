@@ -1,5 +1,6 @@
-[
+
   {
+    "id": "7d2f4a5e-1b2c-4d3e-8f9a-0b1c2d3e4f5a",
     "firstName": "Ramsey",
     "lastName": "Albergotti",
     "returning": true,
@@ -8,6 +9,7 @@
     "notes": ["3/27 show, fronted Pillars, performed in Party Quirks"]
   },
   {
+    "id": "1b2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6e",
     "firstName": "Joe",
     "lastName": "Hardy",
     "returning": true,
@@ -16,6 +18,7 @@
     "notes": ["3/27 show, performed in Oracle and Pillars. Great Heated Rivalry bit"]
   },
   {
+    "id": "2c3d4e5f-6a7b-8c9d-0e1f-2a3b4c5d6e7f",
     "firstName": "Will",
     "lastName": "Hahne",
     "returning": true,
@@ -24,6 +27,7 @@
     "notes": ["3/27 show, fronted Seance Oracle (wonderful fronting), performed in Party Quirks"]
   },
   {
+    "id": "3d4e5f6a-7b8c-9d0e-1f2a-3b4c5d6e7f8a",
     "firstName": "Frances",
     "lastName": "Lang",
     "returning": true,
@@ -32,6 +36,7 @@
     "notes": ["3/27 show, performed in Oracle and Party Quirks"]
   },
   {
+    "id": "4e5f6a7b-8c9d-0e1f-2a3b-4c5d6e7f8a9b",
     "firstName": "Fake",
     "lastName": "Member",
     "returning": false,
@@ -40,6 +45,7 @@
     "notes": ["Just made this one up as filler, I don't want to write all members right now. That's a later job"]
   },
   {
+    "id": "5f6a7b8c-9d0e-1f2a-3b4c-5d6e7f8a9b0c",
     "firstName": "Gracen",
     "lastName": "Greenburg",
     "returning": true,

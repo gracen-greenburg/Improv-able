@@ -7,6 +7,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 // the basis of our roster
 data class RosterInfo (
+    val id: String,
     val firstName: String,
     val lastName: String,
     val returning: Boolean, // have they been here before?
