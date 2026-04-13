@@ -17,10 +17,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun SuggestionsScreen(onNavigateBack: () -> Unit) {
+fun SuggestionsScreen(
+    onNavigateBack: () -> Unit,
+    viewModel: SuggestionsViewModel = viewModel(
+        factory = SuggestionsViewModel.Factory(LocalContext.current)
+    )) {
+    var answer = remember { mutableStateOf("") }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -30,22 +37,44 @@ fun SuggestionsScreen(onNavigateBack: () -> Unit) {
     ) {
         val newSuggestion = remember {mutableStateOf("")}
 
+        fun showQuestion() {
+            var old = answer.value;
+            do {
+                answer.value = viewModel.getQuestion()
+            } while (old.equals(answer.value))
+        }
+
+        fun showSuggestion() {
+            var old = answer.value;
+            do {
+                answer.value = viewModel.getSuggestion()
+            } while (old.equals(answer.value))
+        }
+
         Spacer(modifier = Modifier.height(16.dp))
         Text("Suggestions", style = MaterialTheme.typography.headlineMedium)
         Spacer(modifier = Modifier.height(32.dp))
 
         Text("Click to get a question for the audience to come up with a guided suggestion.")
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = {}) {
+        Button(onClick = {
+            showQuestion()
+        }) {
             Text("Get Question")
         }
         Spacer(modifier = Modifier.height(32.dp))
 
         Text("Click to get a random suggestion")
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = {}) {
+        Button(onClick = {
+            showSuggestion()
+        }) {
             Text("Get Suggestion")
         }
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        Text(answer.value)
 
         Spacer(modifier = Modifier.weight(1f))
 
