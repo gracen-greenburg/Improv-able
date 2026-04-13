@@ -19,6 +19,7 @@ import com.example.improvable.ui.screens.SceneScreen
 import com.example.improvable.ui.screens.SessionScreen
 import com.example.improvable.ui.screens.SessionsListViewModel
 import com.example.improvable.ui.screens.SessionsScreen
+import com.example.improvable.ui.screens.SuggestionsScreen
 import com.example.improvable.ui.screens.WarmupsScreen
 
 @Composable
@@ -206,15 +207,3 @@ fun LeadershipScreen(onNavigateBack: () -> Unit) {
 //    }
 //}
 
-@Composable
-fun SuggestionsScreen(onNavigateBack: () -> Unit) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = "SUGGESTION")
-        Button(onClick = onNavigateBack) {
-            Text(text = "Back")
-        }
-    }
-}
