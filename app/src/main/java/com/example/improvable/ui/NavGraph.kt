@@ -15,6 +15,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.improvable.ui.screens.GamesScreen
 import com.example.improvable.ui.screens.HomeScreen
 import com.example.improvable.ui.screens.RosterScreen
+import com.example.improvable.ui.screens.SceneScreen
 import com.example.improvable.ui.screens.SessionScreen
 import com.example.improvable.ui.screens.SessionsListViewModel
 import com.example.improvable.ui.screens.SessionsScreen
@@ -88,6 +89,17 @@ fun NavGraph(navController: NavHostController) {
         }
         composable("scenes") {
             SessionScreen(
+                onNavigateBack = {
+                    navController.popBackStack()
+                },
+                onNavigateToScene = {
+                    navController.navigate("scene")
+                },
+                viewModel = sessionsViewModel
+            )
+        }
+        composable("scene") {
+            SceneScreen(
                 onNavigateBack = {
                     navController.popBackStack()
                 },

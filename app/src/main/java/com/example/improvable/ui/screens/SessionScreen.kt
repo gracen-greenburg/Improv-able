@@ -39,6 +39,7 @@ import java.util.Date
 @Composable
 fun SessionScreen(
     onNavigateBack: () -> Unit, // same thing as gameScreen
+    onNavigateToScene: () -> Unit,
     viewModel: SessionsListViewModel = viewModel(
         factory = SessionsListViewModel.Factory(LocalContext.current)
     )
@@ -59,10 +60,10 @@ fun SessionScreen(
         ) {
             items(currentSession.scenes.size + 1) {sceneIndex ->
                 if (sceneIndex < currentSession.scenes.size) {
-                    SceneThumbnail(currentSession.scenes[sceneIndex])
+                    SceneThumbnail(currentSession.scenes[sceneIndex], viewModel, onNavigateToScene)
                 }
                 else {
-                    AddSceneThumbnail()
+                    AddSceneThumbnail(viewModel, onNavigateToScene)
                 }
             }
         }
@@ -75,18 +76,29 @@ fun SessionScreen(
 }
 
 @Composable
-fun SceneThumbnail(scene : SceneInfo) {
+fun SceneThumbnail(scene : SceneInfo, viewModel: SessionsListViewModel, onNavigateToScene: () -> Unit) {
     val image = painterResource(R.drawable.unloaded_image_icon)
-    Box() {
+    Box(
+        modifier = Modifier
+            .clickable{
+                viewModel.currentScene = scene
+                onNavigateToScene()
+            }
+    ) {
         Image(image, "The thumbnail image for a scene.")
         Text(if (scene.game == null) "New Scene" else scene.game!!.title , modifier = Modifier.align(Alignment.BottomCenter))
     }
 }
 
 @Composable
-fun AddSceneThumbnail() {
+fun AddSceneThumbnail(viewModel: SessionsListViewModel, onNavigateToScene: () -> Unit) {
     val image = painterResource(R.drawable.plus_sign)
-    Box() {
+    Box(
+            modifier = Modifier
+                .clickable{
+                    //go to the game selection screen, then after that navigate to SceneScreen.
+                }
+            ) {
         Image(image, "The thumbnail image for a scene.")
         Text("Add Scene", modifier = Modifier.align(Alignment.BottomCenter))
     }
