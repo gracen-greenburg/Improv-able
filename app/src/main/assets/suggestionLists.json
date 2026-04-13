@@ -1,0 +1,21 @@
+[
+  {
+    "category": "questions",
+    "content": [
+      "What's your ideal vacation spot?",
+      "I have a little wooden box. What's inside the box?",
+      "Give me the title of a movie that doesn't exist."
+    ]
+  },
+  {
+    "category": "general suggestions",
+    "content": [
+      "Active volcano",
+      "The Moon",
+      "Little blue bird",
+      "Glass jar",
+      "Rat-Man",
+      "The Worst Showman"
+    ]
+  }
+]
