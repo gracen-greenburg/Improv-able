@@ -10,14 +10,22 @@ import androidx.compose.material3.Button
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.improvable.ui.screens.GamesScreen
 import com.example.improvable.ui.screens.HomeScreen
 import com.example.improvable.ui.screens.RosterScreen
+import com.example.improvable.ui.screens.SessionScreen
+import com.example.improvable.ui.screens.SessionsListViewModel
 import com.example.improvable.ui.screens.SessionsScreen
 import com.example.improvable.ui.screens.WarmupsScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
+    val sessionsViewModel: SessionsListViewModel = viewModel(
+        factory = SessionsListViewModel.Factory(LocalContext.current)
+    )
+
     NavHost(
         navController = navController,
         startDestination = "home"
@@ -71,7 +79,19 @@ fun NavGraph(navController: NavHostController) {
             SessionsScreen(
                 onNavigateBack = {
                     navController.popBackStack()
-                }
+                },
+                onNavigateToScenes = {
+                    navController.navigate("scenes")
+                },
+                viewModel = sessionsViewModel
+            )
+        }
+        composable("scenes") {
+            SessionScreen(
+                onNavigateBack = {
+                    navController.popBackStack()
+                },
+                viewModel = sessionsViewModel
             )
         }
     }

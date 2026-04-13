@@ -10,5 +10,5 @@ import kotlinx.serialization.Serializable
 data class SessionInfo (
     val scenes : List<SceneInfo>,
     val date: Long, // timestamp
-    val notes: String,
+    var notes: String,
 )

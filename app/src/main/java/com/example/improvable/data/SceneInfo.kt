@@ -8,10 +8,10 @@ import kotlinx.serialization.Serializable
 
 // Data for a single scene.
 data class SceneInfo (
-    val game: GamesInfo? = null,
+    var game: GamesInfo? = null,
     val date: Long, // timestamp
     val players: List<RosterInfo>? = listOf(),
-    val notes: String,
-    val thumbnailPath: String, //path to image file for this scene.
-    val recording: String, //path to mp3 file for this scene.
+    var notes: String,
+    var thumbnailPath: String, //path to image file for this scene.
+    var recording: String, //path to mp3 file for this scene.
 )

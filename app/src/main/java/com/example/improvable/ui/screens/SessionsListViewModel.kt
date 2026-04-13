@@ -5,26 +5,23 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.improvable.data.GamesInfo
+import com.example.improvable.data.SceneInfo
 import com.example.improvable.data.SessionInfo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
-import kotlin.text.isBlank
-import kotlin.text.toIntOrNull
 
-class SessionsViewModel(private val context: Context) : ViewModel() {
-    private val _allSessions = MutableStateFlow<List<SessionInfo>>(emptyList())
+class SessionsListViewModel(private val context: Context) : ViewModel() {
+    private val _allSessions = MutableStateFlow<ArrayList<SessionInfo>>(arrayListOf<SessionInfo>())
+    var currentSession : SessionInfo = SessionInfo(emptyList(), 0, "Null session. This should never appear for the user.")
+    var currentScene : SceneInfo = SceneInfo(null, 0, emptyList(), "Null scene. This should never appear for the user.", "", "")
 
     init {
-        Log.d("D", "attempt load.")
         loadSessions() // load games
-        Log.d("D", "load complete.")
     }
 
     // Copied from GamesViewModel. May be overcomplicating things, but I wanted it to show all of the sessions right now with the option to add search or filter.
@@ -42,22 +39,33 @@ class SessionsViewModel(private val context: Context) : ViewModel() {
         viewModelScope.launch {
             try {
                 val jsonString = context.assets.open("sessionInfo.json").bufferedReader().use { it.readText() }
-                _allSessions.value = Json{ignoreUnknownKeys=true}.decodeFromString<List<SessionInfo>>(jsonString)
-                Log.d("D", "SESSIONS COUNT: " +_allSessions.value.size)
+                _allSessions.value = Json{ignoreUnknownKeys=true}.decodeFromString<ArrayList<SessionInfo>>(jsonString)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
     }
 
-    // utilized https://developer.android.com/topic/libraries/architecture/viewmodel/viewmodel-factoriesas a ref
+    // utilized https://developer.android.com/topic/libraries/architecture/viewmodel/viewmodel-factories as a ref
     class Factory(private val context: Context) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(SessionsViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(SessionsListViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return SessionsViewModel(context) as T
+                return SessionsListViewModel(context) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }
+    }
+
+    fun setCurSesh(sessionInfo: SessionInfo) {
+        if (!_allSessions.value.contains(sessionInfo)) {
+            _allSessions.value.add(sessionInfo)
+        }
+        currentSession = sessionInfo
+        Log.d("D", "SET CURRENT SESH: " +currentSession)
+    }
+
+    fun getCurSesh() : SessionInfo {
+        return currentSession
     }
 }

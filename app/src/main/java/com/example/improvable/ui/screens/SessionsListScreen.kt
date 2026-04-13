@@ -27,8 +27,9 @@ import java.util.Date
 @Composable
 fun SessionsScreen(
     onNavigateBack: () -> Unit, // same thing as gameScreen
-    viewModel: SessionsViewModel = viewModel(
-        factory = SessionsViewModel.Factory(LocalContext.current)
+    onNavigateToScenes: () -> Unit,
+    viewModel: SessionsListViewModel = viewModel(
+        factory = SessionsListViewModel.Factory(LocalContext.current)
     )
 ) {
     val displayedSessions by viewModel.displayedSessions.collectAsState()
@@ -40,7 +41,11 @@ fun SessionsScreen(
     ) {
         Spacer(modifier = Modifier.height(16.dp))
         //NOTE: make this button add a new Session and take the user to the SessionScreen for that session.
-        Button(onClick = {}) {
+        Button(onClick = {
+            val newSesh = SessionInfo(emptyList(), System.currentTimeMillis()/1000, "")
+            viewModel.setCurSesh(newSesh)
+            onNavigateToScenes()
+        }) {
             Text("Add New")
         }
         Spacer(modifier = Modifier.height(16.dp))
@@ -51,7 +56,7 @@ fun SessionsScreen(
                 .fillMaxWidth()
         ) {
             items(displayedSessions) { session ->
-                SessionItem(session)
+                SessionItem(session, viewModel, onNavigateToScenes)
                 HorizontalDivider()
             }
         }
@@ -59,12 +64,17 @@ fun SessionsScreen(
 }
 
 @Composable
-fun SessionItem(session : SessionInfo){
+fun SessionItem(session : SessionInfo,
+                viewModel : SessionsListViewModel,
+                onNavigateToScenes: () -> Unit){
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp)
-            .clickable{}
+            .clickable{
+                viewModel.setCurSesh(session)
+                onNavigateToScenes()
+            }
     ) {
         val date = Date(session.date * 1000)
         Text(text = date.toString(), style = MaterialTheme.typography.titleLarge)
