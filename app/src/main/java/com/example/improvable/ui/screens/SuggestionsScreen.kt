@@ -85,7 +85,10 @@ fun SuggestionsScreen(
             onValueChange = { newSuggestion.value = it },
         )
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = {}) {
+        Button(onClick = {
+            viewModel.addSuggestion(newSuggestion.value)
+            newSuggestion.value = ""
+        }) {
             Text("Add to list")
         }
 
