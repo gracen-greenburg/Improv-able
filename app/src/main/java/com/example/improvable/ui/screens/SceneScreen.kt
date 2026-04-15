@@ -2,6 +2,7 @@ package com.example.improvable.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -9,6 +10,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -51,10 +53,15 @@ fun SceneScreen(
                 Text(player.firstName + " " + player.lastName)
             }
         }
+
         Text("Notes")
         TextField(
             value = tempNotes.value,
             onValueChange = { tempNotes.value = it },
         )
+
+        Button(onClick = onNavigateBack, modifier = Modifier.padding(top = 16.dp)) {
+            Text("Back")
+        }
     }
 }

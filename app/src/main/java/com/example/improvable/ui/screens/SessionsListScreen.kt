@@ -60,6 +60,10 @@ fun SessionsScreen(
                 HorizontalDivider()
             }
         }
+
+        Button(onClick = onNavigateBack, modifier = Modifier.padding(top = 16.dp)) {
+            Text("Back")
+        }
     }
 }
 
