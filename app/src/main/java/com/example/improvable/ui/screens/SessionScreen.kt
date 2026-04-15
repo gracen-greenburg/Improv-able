@@ -113,8 +113,6 @@ fun SceneThumbnail(scene : SceneInfo, viewModel: SessionsListViewModel, onNaviga
 
     Box(
         modifier = Modifier
-            .padding(4.dp)
-            .size(150.dp)
             .clickable {
                 viewModel.currentScene = scene
                 onNavigateToScene()
@@ -127,20 +125,19 @@ fun SceneThumbnail(scene : SceneInfo, viewModel: SessionsListViewModel, onNaviga
             Image(
                 bitmap = bitmap.asImageBitmap(),
                 contentDescription = "Scene thumbnail",
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier.fillMaxSize().scale(thumbnailScale),
                 contentScale = ContentScale.Crop
             )
         } else {
             Image(
                 painter = painterResource(R.drawable.unloaded_image_icon),
                 contentDescription = "No thumbnail",
-                modifier = Modifier.size(64.dp)
+                modifier = Modifier.scale(thumbnailScale)
             )
         }
         Text(
             text = if (scene.game == null) "New Scene" else scene.game!!.title,
-            modifier = Modifier.align(Alignment.BottomCenter),
-            style = MaterialTheme.typography.labelSmall
+            modifier = Modifier.align(Alignment.BottomCenter)
         )
     }
 }
@@ -156,7 +153,7 @@ fun AddSceneThumbnail(onNavigateToGameSelect: () -> Unit) {
                     onNavigateToGameSelect() // added 4/15
                 }
             ) {
-        Image(image, "The thumbnail image for a scene.")
+        Image(image, "The thumbnail image for a scene.", modifier = Modifier.scale(thumbnailScale))
         Text("Add Scene", modifier = Modifier.align(Alignment.BottomCenter))
     }
 }
