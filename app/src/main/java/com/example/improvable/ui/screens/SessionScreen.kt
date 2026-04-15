@@ -71,7 +71,8 @@ fun SessionScreen(
         Text("Notes")
         TextField(
             value = tempNotes.value,
-            onValueChange = { tempNotes.value = it },
+            onValueChange = { tempNotes.value = it
+                              currentSession.notes = tempNotes.value},
         )
 
         Button(onClick = onNavigateBack, modifier = Modifier.padding(top = 16.dp)) {

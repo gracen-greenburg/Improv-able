@@ -57,7 +57,8 @@ fun SceneScreen(
         Text("Notes")
         TextField(
             value = tempNotes.value,
-            onValueChange = { tempNotes.value = it },
+            onValueChange = { tempNotes.value = it
+                              currentScene.notes = tempNotes.value},
         )
 
         Button(onClick = onNavigateBack, modifier = Modifier.padding(top = 16.dp)) {

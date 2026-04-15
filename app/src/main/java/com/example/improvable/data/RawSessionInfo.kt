@@ -5,9 +5,9 @@ import kotlinx.serialization.Serializable
 
 @OptIn(InternalSerializationApi::class)
 @Serializable
-// Data for a session, which includes many scenes.
-data class SessionInfo (
-    val scenes : List<SceneInfo>,
+// Raw data for a session for reading the JSON and translating to a SessionInfo
+data class RawSessionInfo (
+    val scenes : List<RawSceneInfo>,
     val date: Long, // timestamp
     var notes: String,
 )
