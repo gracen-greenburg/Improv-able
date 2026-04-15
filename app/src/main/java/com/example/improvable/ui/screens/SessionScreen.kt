@@ -26,6 +26,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -35,6 +36,8 @@ import com.example.improvable.data.SceneInfo
 import com.example.improvable.data.SessionInfo
 import com.example.improvable.R
 import java.util.Date
+
+const val thumbnailScale = 0.7f
 
 @Composable
 fun SessionScreen(
@@ -91,7 +94,7 @@ fun SceneThumbnail(scene : SceneInfo, viewModel: SessionsListViewModel, onNaviga
                 onNavigateToScene()
             }
     ) {
-        Image(image, "The thumbnail image for a scene.")
+        Image(image, "The thumbnail image for a scene.", modifier = Modifier.scale(thumbnailScale))
         Text(if (scene.game == null) "New Scene" else scene.game!!.title , modifier = Modifier.align(Alignment.BottomCenter))
     }
 }
@@ -105,7 +108,7 @@ fun AddSceneThumbnail(viewModel: SessionsListViewModel, onNavigateToScene: () ->
                     //go to the game selection screen, then after that navigate to SceneScreen.
                 }
             ) {
-        Image(image, "The thumbnail image for a scene.")
+        Image(image, "The thumbnail image for a scene.", modifier = Modifier.scale(thumbnailScale))
         Text("Add Scene", modifier = Modifier.align(Alignment.BottomCenter))
     }
 }
