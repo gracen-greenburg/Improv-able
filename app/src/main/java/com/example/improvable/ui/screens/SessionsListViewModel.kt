@@ -117,4 +117,20 @@ class SessionsListViewModel(private val context: Context) : ViewModel() {
     fun getCurSesh() : SessionInfo {
         return currentSession
     }
+
+    // 4/15 implementation --> adding scene to current session. I fear a merge removed the original implementation
+
+    fun addSceneToCurrentSession(scene: SceneInfo) {
+        val updatedScenes = currentSession.scenes.toMutableList()
+        updatedScenes.add(scene)
+        currentSession = currentSession.copy(scenes = updatedScenes)
+
+        // UPDATING
+        val index = _allSessions.value.indexOfFirst { it.date == currentSession.date }
+        if (index != -1) {
+            _allSessions.value[index] = currentSession
+            // UPDATE THROUGH STATEFLOW NOW
+            _allSessions.value = ArrayList(_allSessions.value)
+        }
+    }
 }
