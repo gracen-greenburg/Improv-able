@@ -5,14 +5,17 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
@@ -24,6 +27,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
@@ -43,43 +47,55 @@ const val thumbnailScale = 0.7f
 fun SessionScreen(
     onNavigateBack: () -> Unit, // same thing as gameScreen
     onNavigateToScene: () -> Unit,
-    viewModel: SessionsListViewModel = viewModel(
-        factory = SessionsListViewModel.Factory(LocalContext.current)
-    )
+    onNavigateToGameSelect: () -> Unit,
+    viewModel: SessionsListViewModel
 ) {
-    val currentSession = viewModel.currentSession
-    var tempNotes = remember {mutableStateOf(currentSession.notes)}
+    val currentSession = viewModel.currentSession ?: return
+    var tempNotes by remember(currentSession) { mutableStateOf(currentSession.notes) }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text(
+            text = "Session: ${Date(currentSession.date * 1000)}",
+            style = MaterialTheme.typography.headlineSmall
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth()
         ) {
-            items(currentSession.scenes.size + 1) {sceneIndex ->
-                if (sceneIndex < currentSession.scenes.size) {
-                    SceneThumbnail(currentSession.scenes[sceneIndex], viewModel, onNavigateToScene)
-                }
-                else {
-                    AddSceneThumbnail(viewModel, onNavigateToScene)
-                }
+            items(currentSession.scenes) { scene ->
+                SceneThumbnail(scene, viewModel, onNavigateToScene)
+            }
+            item {
+                AddSceneThumbnail(onNavigateToGameSelect)
             }
         }
 
         Text("Notes")
         TextField(
-            value = tempNotes.value,
-            onValueChange = { tempNotes.value = it
-                              currentSession.notes = tempNotes.value},
-        )
+            // 4/15 I keep getting errors here. Tried implementing by adding current Session notes as it as well
+            // .value kept throwing errors
+//            value = tempNotes.value,
+//            onValueChange = { tempNotes.value = it },
+            value = tempNotes,
+            onValueChange = {
+                tempNotes = it
+                currentSession.notes = it
+            },
+            modifier = Modifier.fillMaxWidth()
 
+        )
         Button(onClick = onNavigateBack, modifier = Modifier.padding(top = 16.dp)) {
-            Text("Back")
+            Text(text = "Back")
         }
     }
 }
@@ -92,23 +108,26 @@ fun SceneThumbnail(scene : SceneInfo, viewModel: SessionsListViewModel, onNaviga
             .clickable{
                 viewModel.currentScene = scene
                 onNavigateToScene()
-            }
+            },
+        contentAlignment = Alignment.Center
     ) {
-        Image(image, "The thumbnail image for a scene.", modifier = Modifier.scale(thumbnailScale))
+        Image(image, "The thumbnail image for a scene.")
         Text(if (scene.game == null) "New Scene" else scene.game!!.title , modifier = Modifier.align(Alignment.BottomCenter))
     }
 }
 
 @Composable
-fun AddSceneThumbnail(viewModel: SessionsListViewModel, onNavigateToScene: () -> Unit) {
+// adjusting to get game select screen navigation in there 4/15
+fun AddSceneThumbnail(onNavigateToGameSelect: () -> Unit) {
     val image = painterResource(R.drawable.plus_sign)
     Box(
             modifier = Modifier
                 .clickable{
                     //go to the game selection screen, then after that navigate to SceneScreen.
+                    onNavigateToGameSelect() // added 4/15
                 }
             ) {
-        Image(image, "The thumbnail image for a scene.", modifier = Modifier.scale(thumbnailScale))
+        Image(image, "The thumbnail image for a scene.")
         Text("Add Scene", modifier = Modifier.align(Alignment.BottomCenter))
     }
 }

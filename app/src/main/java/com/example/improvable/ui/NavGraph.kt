@@ -21,6 +21,7 @@ import com.example.improvable.ui.screens.SessionsListViewModel
 import com.example.improvable.ui.screens.SessionsScreen
 import com.example.improvable.ui.screens.SuggestionsScreen
 import com.example.improvable.ui.screens.WarmupsScreen
+import com.example.improvable.ui.screens.GameSelectScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -96,6 +97,9 @@ fun NavGraph(navController: NavHostController) {
                 onNavigateToScene = {
                     navController.navigate("scene")
                 },
+                onNavigateToGameSelect = {
+                    navController.navigate("game_select")
+                },
                 viewModel = sessionsViewModel
             )
         }
@@ -107,6 +111,14 @@ fun NavGraph(navController: NavHostController) {
                 viewModel = sessionsViewModel
             )
         }
+        composable("game_select") {
+            GameSelectScreen(
+                onNavigateBack = {
+                    navController.popBackStack()
+                },
+                sessionsViewModel = sessionsViewModel
+            )
+        }
     }
 }
 
@@ -116,7 +128,9 @@ fun HomeScreen( // starting with three basic screens to get into the flow
     onNavigateToGames: () -> Unit,
     onNavigateToLeadership: () -> Unit,
     onNavigateToRoster: () -> Unit,
-    onNavigateToSuggestions: () -> Unit) {
+    onNavigateToRecording: () -> Unit, // added this back since it's used in HomeScreen
+    onNavigateToSuggestions: () -> Unit,
+    onNavigateToSessions: () -> Unit) {
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -137,6 +151,9 @@ fun HomeScreen( // starting with three basic screens to get into the flow
         }
         Button(onClick = onNavigateToSuggestions) {
             Text(text = "CAN I GET A SUGGESTION")
+        }
+        Button(onClick = onNavigateToSessions) {
+            Text(text = "SESSIONS")
         }
     }
 }

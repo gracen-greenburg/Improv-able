@@ -1,6 +1,5 @@
 package com.example.improvable.ui.screens
 
-import android.opengl.Visibility
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.VisibilityThreshold
@@ -101,18 +100,6 @@ fun GamesScreen( // adding the viewmodel so we can change screen
             Text(text = "Back") // we can still click back
         }
     }
-
-    //
-    if (showPlayerPicker && gameToAddToSession != null) {
-        PlayerSelectionDialog(
-            roster = roster,
-            onDismiss = { showPlayerPicker = false }, // dismiss --> don't worry aboyt player session
-            onConfirm = { selectedPlayers ->
-                // NEED TO ADD LOGIC TO ADD TO SESSION
-                showPlayerPicker = false
-            }
-        )
-    }
 }
 
 // used https://composeexamples.com/components/application-ui/components/accordions for guidance
@@ -139,13 +126,6 @@ fun GameItem(
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.weight(1f)
             )
-            IconButton(onClick = onAddToSession) {
-                Icon(
-                    imageVector = Icons.Default.Add, // BUILT IN ADD BUTTON
-                    contentDescription = "Add to Session",
-                    tint = MaterialTheme.colorScheme.primary // with our color scheme --> implement this further
-                )
-            }
         }
     }
     AnimatedVisibility(
@@ -185,70 +165,3 @@ fun GameItem(
     }
 }
 
-// 4/8 ADDING PLAYER SELECTION DIALOGue
-@Composable
-fun PlayerSelectionDialog(
-    roster: List<RosterInfo>,
-    onDismiss: () -> Unit,
-    onConfirm: (List<RosterInfo>) -> Unit
-) {
-    val selectedPlayers = remember { mutableStateListOf<RosterInfo>() }
-
-    // https://developer.android.com/develop/ui/views/components/dialogs ref
-    // the vision is that it is a pop up, you checkbox the players playing and add them and submit,
-    // they're added to the sesh and then you get transported to the session screen (?)
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("Select Players") },
-        text = {
-            Column(modifier = Modifier.fillMaxWidth()) {
-                if (roster.isEmpty()) {
-                    Text(
-                        text = "No players found in roster",
-                        style = MaterialTheme.typography.bodyMedium
-                    )
-                } else {
-                    LazyColumn(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .heightIn(max = 400.dp)
-                    ) {
-                        items(roster) { person ->
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clickable {
-                                        if (selectedPlayers.contains(person)) {
-                                            selectedPlayers.remove(person)
-                                        } else {
-                                            selectedPlayers.add(person)
-                                        }
-                                    }
-                                    .padding(vertical = 8.dp),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Checkbox(
-                                    checked = selectedPlayers.contains(person),
-                                    onCheckedChange = null // Click handled by Row
-                                )
-                                Text(
-                                    text = "${person.firstName} ${person.lastName}",
-                                    modifier = Modifier.padding(start = 8.dp),
-                                    style = MaterialTheme.typography.bodyLarge
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        confirmButton = {
-            Button(onClick = { onConfirm(selectedPlayers.toList()) }) { Text("Add to Session") }
-        },
-        dismissButton = { // get rid of the alert popup
-            Button(onClick = onDismiss) {
-                Text("Cancel")
-            }
-        }
-    )
-}
