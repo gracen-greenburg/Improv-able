@@ -1,5 +1,6 @@
 package com.example.improvable.ui.screens
 
+import android.graphics.BitmapFactory
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -31,13 +32,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.improvable.data.SceneInfo
-import com.example.improvable.data.SessionInfo
 import com.example.improvable.R
 import java.util.Date
 
@@ -102,17 +103,45 @@ fun SessionScreen(
 
 @Composable
 fun SceneThumbnail(scene : SceneInfo, viewModel: SessionsListViewModel, onNavigateToScene: () -> Unit) {
-    val image = painterResource(R.drawable.unloaded_image_icon)
+    val bitmap = remember(scene.thumbnailPath) {
+        if (scene.thumbnailPath.isNotEmpty()) {
+            BitmapFactory.decodeFile(scene.thumbnailPath)
+        } else {
+            null
+        }
+    }
+
     Box(
         modifier = Modifier
-            .clickable{
+            .padding(4.dp)
+            .size(150.dp)
+            .clickable {
                 viewModel.currentScene = scene
                 onNavigateToScene()
             },
         contentAlignment = Alignment.Center
     ) {
-        Image(image, "The thumbnail image for a scene.")
-        Text(if (scene.game == null) "New Scene" else scene.game!!.title , modifier = Modifier.align(Alignment.BottomCenter))
+        //IMAGE HANDLING
+                // bit maps --> make bitmap from scene  into image for thumbnail
+        if (bitmap != null) {
+            Image(
+                bitmap = bitmap.asImageBitmap(),
+                contentDescription = "Scene thumbnail",
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop
+            )
+        } else {
+            Image(
+                painter = painterResource(R.drawable.unloaded_image_icon),
+                contentDescription = "No thumbnail",
+                modifier = Modifier.size(64.dp)
+            )
+        }
+        Text(
+            text = if (scene.game == null) "New Scene" else scene.game!!.title,
+            modifier = Modifier.align(Alignment.BottomCenter),
+            style = MaterialTheme.typography.labelSmall
+        )
     }
 }
 
