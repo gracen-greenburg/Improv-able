@@ -1,6 +1,7 @@
 package com.example.improvable.ui.screens
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -20,20 +21,26 @@ class RosterViewModel(private val context: Context) : ViewModel() {
 
     private val rosterFile = File(context.filesDir, "rosterInfo.json") /// so we can update it
 
+    // won't read my roster file so I looked it up
+    private val json = Json {
+        ignoreUnknownKeys = true
+        coerceInputValues = true
+    }
 
     init {
         loadRoster() //load our roster
     }
-
     private fun loadRoster() {
         viewModelScope.launch {
             try {
-                val jsonString = if (rosterFile.exists()) {
+                // Check if internal file exists and isn't empty
+                val jsonString = if (rosterFile.exists() && rosterFile.length() > 0) {
                     rosterFile.readText()
                 } else {
                     context.assets.open("rosterInfo.json").bufferedReader().use { it.readText() }
                 }
-                _roster.value = Json.decodeFromString<List<RosterInfo>>(jsonString)
+                _roster.value = json.decodeFromString<List<RosterInfo>>(jsonString)
+
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -43,13 +50,12 @@ class RosterViewModel(private val context: Context) : ViewModel() {
     // marks and updates attendance for each person
     // As of 4/8 no longer taking attendance
 
-        fun saveRoster() {
-            viewModelScope.launch {
-                try {
-                    val jsonString = Json.encodeToString(_roster.value)
-                    rosterFile.writeText(jsonString)
-                } catch (e: Exception) {
-                    e.printStackTrace()
+    fun saveRoster() {
+        viewModelScope.launch {
+            try {
+                val jsonString = json.encodeToString(_roster.value)
+                rosterFile.writeText(jsonString)
+            } catch (e: Exception) {
             }
         }
     }
