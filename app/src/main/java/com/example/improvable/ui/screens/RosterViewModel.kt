@@ -40,19 +40,8 @@ class RosterViewModel(private val context: Context) : ViewModel() {
         }
     }
 
-
     // marks and updates attendance for each person
     // As of 4/8 no longer taking attendance
-//    fun markAttendance(index: Int, isPresent: Boolean) {
-//        val currentRoster = _roster.value.toMutableList()
-//        if (index in currentRoster.indices) {
-//            val person = currentRoster[index]
-//            val updatedAttendance = person.attendance.toMutableList()
-//            updatedAttendance.add(isPresent)
-//            currentRoster[index] = person.copy(attendance = updatedAttendance)
-//            _roster.value = currentRoster
-//        }
-//    }
 
         fun saveRoster() {
             viewModelScope.launch {

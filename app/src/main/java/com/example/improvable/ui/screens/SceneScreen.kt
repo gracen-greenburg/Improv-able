@@ -132,11 +132,14 @@ fun SceneScreen(
             Text("Take Picture")
         }
 
+        Text("Players")
+
         LazyColumn(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth()
         ) {
+            // add players
             items(currentScene.players) { player ->
                 Text(player.firstName + " " + player.lastName)
             }
