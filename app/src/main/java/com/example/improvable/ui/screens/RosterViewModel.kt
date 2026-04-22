@@ -48,23 +48,9 @@ class RosterViewModel(private val context: Context) : ViewModel() {
         )
         val updatedList = _roster.value + newMember
         _roster.value = updatedList
-        saveRoster()
-    }
-    // marks and updates attendance for each person
-    // As of 4/8 no longer taking attendance
-
-    fun saveRoster() {
-        viewModelScope.launch {
-            try {
-                val jsonString = json.encodeToString(_roster.value)
-                rosterFile.writeText(jsonString)
-            } catch (e: Exception) {
-            }
-        }
+        AppPreferences.saveRosterToPrefs(context, _roster.value)
     }
 
-
-    //
     class Factory(private val context: Context) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(RosterViewModel::class.java)) {

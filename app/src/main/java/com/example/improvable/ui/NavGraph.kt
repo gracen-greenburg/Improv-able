@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.improvable.data.AppPreferences
 import com.example.improvable.ui.screens.GamesScreen
 import com.example.improvable.ui.screens.HomeScreen
 import com.example.improvable.ui.screens.RosterScreen
@@ -29,6 +30,9 @@ fun NavGraph(navController: NavHostController) {
     val sessionsViewModel: SessionsListViewModel = viewModel(
         factory = SessionsListViewModel.Factory(LocalContext.current)
     )
+
+    // Initialize all app data (only if data has never been initialized on the app_.
+    AppPreferences.checkInit(LocalContext.current)
 
     NavHost(
         navController = navController,
