@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.example.improvable.data.AppPreferences
 import com.example.improvable.data.RosterInfo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -31,20 +32,7 @@ class RosterViewModel(private val context: Context) : ViewModel() {
         loadRoster() //load our roster
     }
     private fun loadRoster() {
-        viewModelScope.launch {
-            try {
-                // Check if internal file exists and isn't empty
-                val jsonString = if (rosterFile.exists() && rosterFile.length() > 0) {
-                    rosterFile.readText()
-                } else {
-                    context.assets.open("rosterInfo.json").bufferedReader().use { it.readText() }
-                }
-                _roster.value = json.decodeFromString<List<RosterInfo>>(jsonString)
-
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
+        _roster.value = AppPreferences.loadRosterFromPrefs(context)
     }
 
     // marks and updates attendance for each person

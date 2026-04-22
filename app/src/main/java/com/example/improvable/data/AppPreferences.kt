@@ -6,6 +6,7 @@ import androidx.core.content.edit
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import java.io.File
 
 class AppPreferences {
     companion object {
@@ -15,6 +16,7 @@ class AppPreferences {
         private const val SUGGESTIONS_JSON_PATH = "suggestionLists.json"
 
         private const val GAMES_JSON_PATH = "gamesInfo.json"
+        private const val ROSTER_JSON_PATH = "rosterInfo.json"
 
 
         private fun prefs(context: Context) =
@@ -44,8 +46,37 @@ class AppPreferences {
             return Json.decodeFromString<List<GamesInfo>>(jsonString)
         }
 
-        fun loadSessionsFromPrefs(context: Context) {
+        fun saveRosterToPrefs(context: Context, roster: List<RosterInfo>) {
+            val jsonString = Json.encodeToString(roster)
+            prefs(context).edit { putString(ROSTER_JSON_PATH, jsonString) }
+        }
 
+        fun loadRosterFromPrefs(context: Context) : List<RosterInfo> {
+            val p = context.getSharedPreferences(PREFS_PATH, Context.MODE_PRIVATE)
+            val jsonString = p.getString(ROSTER_JSON_PATH, "")!!
+            return Json.decodeFromString<List<RosterInfo>>(jsonString)
+        }
+
+        // Reset all data to the default values in the source json files.
+        fun resetAllData(context: Context) {
+            // reset games info
+            val gamesJsonString = context.assets.open(GAMES_JSON_PATH).bufferedReader().use { it.readText() }
+            val games = Json.decodeFromString<List<GamesInfo>>(gamesJsonString)
+            saveGamesToPrefs(context, games)
+
+            // reset roster info
+            val rosterJsonString = context.assets.open(ROSTER_JSON_PATH).bufferedReader().use { it.readText() }
+            val players = Json.decodeFromString<List<RosterInfo>>(rosterJsonString)
+            saveRosterToPrefs(context, players)
+
+            // reset suggestions info
+            val suggestJsonString = context.assets.open(SUGGESTIONS_JSON_PATH).bufferedReader().use { it.readText() }
+            val suggest = Json.decodeFromString<List<SuggestionsList>>(rosterJsonString)
+            // these are currently hardcoded. fix if more suggestion categories are ever implemented.
+            val q = if (suggest[0].category == SUGGESTIONS_QUESTIONS_KEY) suggest[0].content else suggest[1].content
+            var g = if (suggest[0].category == SUGGESTIONS_GENERAL_KEY) suggest[0].content else suggest[1].content
+            g = ArrayList(g)
+            saveSuggestionsToPrefs(context, q, g)
         }
 
 //        fun saveSessionsToPrefs(context: Context, sessions: MutableStateFlow<ArrayList<SessionInfo>>) {

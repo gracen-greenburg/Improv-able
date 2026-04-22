@@ -52,17 +52,7 @@ class GamesViewModel(private val context: Context) : ViewModel() {
     }
 
     private fun loadGames() {
-        // show off all our data
         _allGames.value = AppPreferences.loadGamesFromPrefs(context)
-        viewModelScope.launch {
-            try {
-                val jsonString = context.assets.open("gamesInfo.json").bufferedReader().use { it.readText() }
-                _allGames.value = Json.decodeFromString<List<GamesInfo>>(jsonString)
-
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
     }
 
 
