@@ -53,51 +53,55 @@ fun RosterScreen(onNavigateBack: () -> Unit, // same thing as gameScreen
 
     Column(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
+            .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // make the text look prettier later, figure this out now
-        Text(text = "Roster", style = MaterialTheme.typography.headlineMedium)
+        Header("Roster")
 
-        LazyColumn(
+        Column(
             modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth()
-                .padding(top = 16.dp)
+                .fillMaxSize()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            items(roster) { person ->
-                RosterMemberItem(person = person)
-                HorizontalDivider()
-            }
-        }
-
-        // keep navigation back
-        Column(modifier = Modifier.padding(top = 16.dp)) {
-            // 4/21 adding member as a button
-            Button(
-                onClick = { showAddDialog = true },
-                modifier = Modifier.padding(top = 8.dp)
+            LazyColumn(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
             ) {
-                Text("Add New Member")
+                items(roster) { person ->
+                    RosterMemberItem(person = person)
+                    HorizontalDivider()
+                }
             }
-            // Back Button
-            Button(
-                onClick = onNavigateBack) {
-                Text(text = "Back")
+
+            // keep navigation back
+            Column(modifier = Modifier.padding(top = 16.dp)) {
+                // 4/21 adding member as a button
+                Button(
+                    onClick = { showAddDialog = true },
+                    modifier = Modifier.padding(top = 8.dp)
+                ) {
+                    Text("Add New Member")
+                }
+                // Back Button
+                Button(
+                    onClick = onNavigateBack) {
+                    Text(text = "Back")
+                }
             }
         }
-    }
 
-    // Actually show the dialog when state is true
-    if (showAddDialog) {
-        AddMemberDialog(
-            onDismiss = { showAddDialog = false },
-            onConfirm = { firstName, lastName, returning, year, isCore ->
-                viewModel.addMember(firstName, lastName, returning, year, isCore)
-                showAddDialog = false
-            }
-        )
+        // Actually show the dialog when state is true
+        if (showAddDialog) {
+            AddMemberDialog(
+                onDismiss = { showAddDialog = false },
+                onConfirm = { firstName, lastName, returning, year, isCore ->
+                    viewModel.addMember(firstName, lastName, returning, year, isCore)
+                    showAddDialog = false
+                }
+            )
+        }
     }
 }
 

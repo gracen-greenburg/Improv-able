@@ -36,6 +36,8 @@ fun SuggestionsScreen(
         ,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Header("Suggestions")
+
         val newSuggestion = remember {mutableStateOf("")}
 
         fun showQuestion() {

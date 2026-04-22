@@ -58,7 +58,6 @@ fun SessionsScreen(
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(16.dp))
             //NOTE: make this button add a new Session and take the user to the SessionScreen for that session.
             Button(onClick = {
                 val newSesh = SessionInfo(emptyList(), System.currentTimeMillis()/1000, "")

@@ -48,75 +48,76 @@ fun WarmupsScreen(
     // can still searhc through warm ups --> taken from GamesScreen
     val searchText by viewModel.searchText.collectAsState() //searching by name
     val filteredGames by viewModel.filteredGames.collectAsState() // resulting list of games after filter
+
     Column(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
+            .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        val whooshElements = listOf( // list of whoosh elements
-            "Whoosh",
-            "Ninja Star",
-            "Give me an Impression of..",
-            "Rupert",
-            "Jumbalayah",
-            "Get Out Me Pub",
-            "Zip Zap Zop variations",
-            "Give me X variations"
-        )
+        Header("Warmups")
 
-        Text(
-            // https://developer.android.com/reference/kotlin/androidx/compose/ui/text/AnnotatedString.Builder
-            text = buildAnnotatedString {
-                withStyle(style = SpanStyle(
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 30.sp,
-                    color = MaterialTheme.colorScheme.primary
-                )) {
-                    append("Warmups\n\n")
-                }
-                
-                append("Start with a classic game of Whoosh, involving any of the following elements:\n")
-
-                // https://www.compart.com/en/unicode/U+2022 --> found ucode for a bullet point
-                val bullet = "\u2022"
-                whooshElements.forEach { element ->
-                    withStyle(style = ParagraphStyle(
-                        textIndent = TextIndent(firstLine = 30.sp, restLine = 28.sp)
-                    )) {
-                        append(bullet)
-                        append("\t")
-                        append(element)
-                    }
-                }
-            },
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 16.dp)
-        )
-
-        OutlinedTextField(
-            value = searchText,
-            onValueChange = viewModel::onSearchTextChange, // CHANGE ON VALUE
-            modifier = Modifier.fillMaxWidth(),
-            placeholder = { Text("Search games or tags...") },
-            label = { Text("Search") }
-        )
-
-        LazyColumn(
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth()
-                .padding(top = 16.dp)
+                .fillMaxSize()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            items(filteredGames) { game ->
-                GameItem(game)
-                HorizontalDivider()
-            }
-        }
+            val whooshElements = listOf( // list of whoosh elements
+                "Whoosh",
+                "Ninja Star",
+                "Give me an Impression of..",
+                "Rupert",
+                "Jumbalayah",
+                "Get Out Me Pub",
+                "Zip Zap Zop variations",
+                "Give me X variations"
+            )
 
-        Button(onClick = onNavigateBack) {
-            Text(text = "Back")
+            Text(
+                // https://developer.android.com/reference/kotlin/androidx/compose/ui/text/AnnotatedString.Builder
+                text = buildAnnotatedString {
+                    append("Start with a classic game of Whoosh, involving any of the following elements:\n")
+
+                    // https://www.compart.com/en/unicode/U+2022 --> found ucode for a bullet point
+                    val bullet = "\u2022"
+                    whooshElements.forEach { element ->
+                        withStyle(style = ParagraphStyle(
+                            textIndent = TextIndent(firstLine = 30.sp, restLine = 28.sp)
+                        )) {
+                            append(bullet)
+                            append("\t")
+                            append(element)
+                        }
+                    }
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 16.dp)
+            )
+
+            OutlinedTextField(
+                value = searchText,
+                onValueChange = viewModel::onSearchTextChange, // CHANGE ON VALUE
+                modifier = Modifier.fillMaxWidth(),
+                placeholder = { Text("Search games or tags...") },
+                label = { Text("Search") }
+            )
+
+            LazyColumn(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+                    .padding(top = 16.dp)
+            ) {
+                items(filteredGames) { game ->
+                    GameItem(game)
+                    HorizontalDivider()
+                }
+            }
+
+            Button(onClick = onNavigateBack) {
+                Text(text = "Back")
+            }
         }
     }
 }

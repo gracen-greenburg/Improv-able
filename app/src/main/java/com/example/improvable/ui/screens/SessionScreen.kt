@@ -56,44 +56,50 @@ fun SessionScreen(
 
     Column(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
+            .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = "Session: ${Date(currentSession.date * 1000)}",
-            style = MaterialTheme.typography.headlineSmall
+        val date = Date(currentSession.date * 1000)
+        val parsedDate : List<String> = date.toString().split(" ")
+        Header(
+            toFullMonth(parsedDate[1]) + " " + toOrdinal(parsedDate[2].toInt()),
+            "Viewing session details"
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
-
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
+        Column(
             modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth()
+                .fillMaxSize()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            items(currentSession.scenes) { scene ->
-                SceneThumbnail(scene, viewModel, onNavigateToScene)
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+            ) {
+                items(currentSession.scenes) { scene ->
+                    SceneThumbnail(scene, viewModel, onNavigateToScene)
+                }
+                item {
+                    AddSceneThumbnail(onNavigateToGameSelect)
+                }
             }
-            item {
-                AddSceneThumbnail(onNavigateToGameSelect)
+
+            Text("Notes")
+            TextField(
+                // 4/15 I keep getting errors here. Tried implementing by adding current Session notes as it as well
+                value = tempNotes,
+                onValueChange = {
+                    tempNotes = it
+                    currentSession.notes = it
+                },
+                modifier = Modifier.fillMaxWidth()
+
+            )
+            Button(onClick = onNavigateBack, modifier = Modifier.padding(top = 16.dp)) {
+                Text(text = "Back")
             }
-        }
-
-        Text("Notes")
-        TextField(
-            // 4/15 I keep getting errors here. Tried implementing by adding current Session notes as it as well
-            value = tempNotes,
-            onValueChange = {
-                tempNotes = it
-                currentSession.notes = it
-            },
-            modifier = Modifier.fillMaxWidth()
-
-        )
-        Button(onClick = onNavigateBack, modifier = Modifier.padding(top = 16.dp)) {
-            Text(text = "Back")
         }
     }
 }
