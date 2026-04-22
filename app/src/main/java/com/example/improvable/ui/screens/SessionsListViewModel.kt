@@ -44,56 +44,7 @@ class SessionsListViewModel(private val context: Context) : ViewModel() {
         )
 
     private fun loadSessions() {
-        viewModelScope.launch {
-            try {
-                // init _allSessions
-                _allSessions.value = arrayListOf<SessionInfo>()
-                // load in games and players data
-                val gamesJsonString = context.assets.open("gamesInfo.json").bufferedReader().use { it.readText() }
-                val games = Json.decodeFromString<List<GamesInfo>>(gamesJsonString)
-                val playersJsonString = context.assets.open("rosterInfo.json").bufferedReader().use { it.readText() }
-                val players = Json.decodeFromString<List<RosterInfo>>(playersJsonString)
-                // load in raw session data
-                val jsonString = context.assets.open("sessionInfo.json").bufferedReader().use { it.readText() }
-                val rawSessions = Json.decodeFromString<ArrayList<RawSessionInfo>>(jsonString)
-                // convert raw session data to real session data
-                for (rawSesh in rawSessions) {
-                    var scenes = ArrayList<SceneInfo>()
-                    for (rawScene in rawSesh.scenes) {
-                        var gm : GamesInfo = GamesInfo("", "None", 0, 0, "")
-                        for (g in games) {
-                            if (rawScene.gameID == g.id) {
-                                gm = g
-                                break
-                            }
-                        }
-                        var ps = ArrayList<RosterInfo>()
-                        for (p in players) {
-                            if (rawScene.playerIDs.contains(p.id)) {
-                                ps.add(p)
-                            }
-                        }
-                        scenes.add(SceneInfo(
-                            gm,
-                            rawScene.date,
-                            ps,
-                            rawScene.notes,
-                            rawScene.thumbnailPath,
-                            rawScene.recording
-                        ))
-                    }
-                    var sesh = SessionInfo(
-                        scenes,
-                        rawSesh.date,
-                        rawSesh.notes
-                    )
-                    _allSessions.value.add(sesh)
-                }
-
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
+        _allSessions.value = ArrayList(AppPreferences.loadSessionsFromPrefs(context))
     }
 
     // utilized https://developer.android.com/topic/libraries/architecture/viewmodel/viewmodel-factories as a ref
@@ -133,5 +84,10 @@ class SessionsListViewModel(private val context: Context) : ViewModel() {
             // UPDATE THROUGH STATEFLOW NOW
             _allSessions.value = ArrayList(_allSessions.value)
         }
+        saveSessions()
+    }
+
+    fun saveSessions() {
+        AppPreferences.saveSessionsToPrefs(context, _allSessions.value)
     }
 }

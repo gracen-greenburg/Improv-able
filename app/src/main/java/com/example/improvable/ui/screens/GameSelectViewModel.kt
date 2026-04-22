@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.example.improvable.data.AppPreferences
 import com.example.improvable.data.GamesInfo
 import com.example.improvable.data.RosterInfo
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -58,15 +59,7 @@ class GameSelectViewModel(private val context: Context) : ViewModel() {
 
 
     private fun loadGames() {
-        // show off all our data
-        viewModelScope.launch {
-            try {
-                val jsonString = context.assets.open("gamesInfo.json").bufferedReader().use { it.readText() }
-                _allGames.value = Json.decodeFromString<List<GamesInfo>>(jsonString)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
+        _allGames.value = AppPreferences.loadGamesFromPrefs(context)
     }
 
 
