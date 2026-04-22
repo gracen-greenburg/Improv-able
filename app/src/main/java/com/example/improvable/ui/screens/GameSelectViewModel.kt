@@ -1,10 +1,12 @@
 package com.example.improvable.ui.screens
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.improvable.data.GamesInfo
+import com.example.improvable.data.RosterInfo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -13,6 +15,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
+import java.io.File
 
 // SAME AS ORIGINAL GAME SELECT VIEW MODEL
 class GameSelectViewModel(private val context: Context) : ViewModel() {
@@ -21,7 +24,13 @@ class GameSelectViewModel(private val context: Context) : ViewModel() {
     private val _searchText = MutableStateFlow("") // search can change on the inside
     val searchText = _searchText.asStateFlow() // but on the outside it is read only
 
+    private val json = Json {
+        ignoreUnknownKeys = true
+        coerceInputValues = true
+    } // i was getting mad with errors
+
     // WHENEVER _searchText OR _allGames CHANGE, WE CHANGE WHAT GAMES GET DISPLAYED
+
     val filteredGames: StateFlow<List<GamesInfo>> = _searchText
         .combine(_allGames) { text, games ->
             if (text.isBlank()) {
@@ -47,9 +56,6 @@ class GameSelectViewModel(private val context: Context) : ViewModel() {
             initialValue = emptyList()
         )
 
-    init {
-        loadGames() // load games
-    }
 
     private fun loadGames() {
         // show off all our data
@@ -57,6 +63,56 @@ class GameSelectViewModel(private val context: Context) : ViewModel() {
             try {
                 val jsonString = context.assets.open("gamesInfo.json").bufferedReader().use { it.readText() }
                 _allGames.value = Json.decodeFromString<List<GamesInfo>>(jsonString)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+
+    // STOLEN FROM ROSTER VIEW MODEL 4/20
+    private val _roster = MutableStateFlow<List<RosterInfo>>(emptyList())
+    val roster = _roster.asStateFlow()
+
+    private val rosterFile = File(context.filesDir, "rosterInfo.json") /// so we can update it
+
+
+    init {
+        loadGames()
+        loadRoster() //load our roster
+    }
+
+    private fun loadRoster() {
+        viewModelScope.launch {
+            try {
+                var loadedRoster: List<RosterInfo>? = null
+
+                if (rosterFile.exists()) {
+                    try {
+                        val jsonString = rosterFile.readText()
+                        if (jsonString.isNotBlank()) {
+                            loadedRoster = json.decodeFromString<List<RosterInfo>>(jsonString)
+                        }
+                    } catch (e: Exception) {
+                        Log.e(
+                            "GameSelectViewModel",
+                            "Error reading roster",
+                            e
+                        )
+                    }
+                }
+
+                if (loadedRoster == null) {
+                    try {
+                        val jsonString = context.assets.open("rosterInfo.json").bufferedReader()
+                            .use { it.readText() }
+                        loadedRoster = json.decodeFromString<List<RosterInfo>>(jsonString)
+                    } catch (e: Exception) {
+                        Log.e("GameSelectViewModel", "Error loading roster from assets", e)
+                    }
+                }
+
+                _roster.value = loadedRoster ?: emptyList()
             } catch (e: Exception) {
                 e.printStackTrace()
             }

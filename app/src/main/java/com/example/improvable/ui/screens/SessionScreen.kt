@@ -84,9 +84,6 @@ fun SessionScreen(
         Text("Notes")
         TextField(
             // 4/15 I keep getting errors here. Tried implementing by adding current Session notes as it as well
-            // .value kept throwing errors
-//            value = tempNotes.value,
-//            onValueChange = { tempNotes.value = it },
             value = tempNotes,
             onValueChange = {
                 tempNotes = it

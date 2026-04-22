@@ -52,21 +52,27 @@ fun GameSelectScreen( // adding the viewmodel so we can change screen
     viewModel: GameSelectViewModel = viewModel(
         factory = GameSelectViewModel.Factory(LocalContext.current) // factrory for viewmodel
     ),
+
+
     // 4/8 implementation, adding so we can see players and add to session
     // 4/15 removing this feature FOR NOW
-//    rosterViewModel: RosterViewModel = viewModel(
-//        factory = RosterViewModel.Factory(LocalContext.current)
-//    ),
+    // 4/20 adding it back
+
     sessionsViewModel: SessionsListViewModel // Pass sessionsViewModel to add games to session
 ) {
     val searchText by viewModel.searchText.collectAsState() //searching by name
     val filteredGames by viewModel.filteredGames.collectAsState() // resulting list of games after filter
+
+
+
     // 4/8 adding so we can add players
     // 4/15 removing FOR NOW
-//    val roster by rosterViewModel.roster.collectAsState()
-//
-//    var showPlayerPicker by remember { mutableStateOf(false) } // pick players in game
-//    var gameToAddToSession by remember { mutableStateOf<GamesInfo?>(null) } // add the game to sesh
+    // 4/20 adding it back?
+
+    val roster by viewModel.roster.collectAsState()
+
+    var showPlayerPicker by remember { mutableStateOf(false) } // pick players in game
+    var gameToAddToSession by remember { mutableStateOf<GamesInfo?>(null) } // add the game to sesh
 
     Column(
         modifier = Modifier
@@ -93,16 +99,8 @@ fun GameSelectScreen( // adding the viewmodel so we can change screen
                 GameSelectItem(
                     game,
                     onAddToSession = {
-                        val newScene = SceneInfo(
-                            game = game,
-                            date = System.currentTimeMillis() / 1000,
-                            players = emptyList(),
-                            notes = "",
-                            thumbnailPath = "",
-                            recording = ""
-                        )
-                        sessionsViewModel.addSceneToCurrentSession(newScene)
-                        onNavigateBack()
+                        gameToAddToSession = game
+                        showPlayerPicker = true
                     }
                 )
                 HorizontalDivider()
@@ -113,28 +111,29 @@ fun GameSelectScreen( // adding the viewmodel so we can change screen
             Text(text = "Back") // we can still click back
         }
 
-        // 4/15 briefly removing
-//    }
-//
-//    //
-//    if (showPlayerPicker && gameToAddToSession != null) {
-//        GameSelectPlayerSelectionDialog(
-//            roster = roster,
-//            onDismiss = { showPlayerPicker = false }, // dismiss --> don't worry aboyt player session
-//            onConfirm = { selectedPlayers ->
-//                val newScene = SceneInfo(
-//                    game = gameToAddToSession,
-//                    date = System.currentTimeMillis() / 1000,
-//                    players = selectedPlayers,
-//                    notes = "",
-//                    thumbnailPath = "",
-//                    recording = ""
-//                )
-//                sessionsViewModel.addSceneToCurrentSession(newScene)
-//                showPlayerPicker = false
-//                onNavigateBack() // Go back to the session screen
-//            }
-//        )
+        if (showPlayerPicker && gameToAddToSession != null) {
+            GameSelectPlayerSelectionDialog(
+                roster = roster,
+                onDismiss = {
+                    showPlayerPicker = false
+                    gameToAddToSession = null
+                }, // dismiss --> don't worry aboyt player session
+                onConfirm = { selectedPlayers ->
+                    val newScene = SceneInfo(
+                        game = gameToAddToSession,
+                        date = System.currentTimeMillis() / 1000,
+                        players = selectedPlayers,
+                        notes = "",
+                        thumbnailPath = "",
+                        recording = ""
+                    )
+                    sessionsViewModel.addSceneToCurrentSession(newScene)
+                    showPlayerPicker = false
+                    gameToAddToSession = null
+                    onNavigateBack() // Go back to the session screen
+                }
+            )
+        }
     }
 }
 
@@ -170,6 +169,7 @@ fun GameSelectItem(
             }
         }
     }
+
     AnimatedVisibility(
         visible = expanded.value,
         enter = expandVertically(
@@ -209,69 +209,96 @@ fun GameSelectItem(
 
 // 4/8 ADDING PLAYER SELECTION DIALOGue
 // 4/15 removing feature for now
-//@Composable
-//fun GameSelectPlayerSelectionDialog(
-//    roster: List<RosterInfo>,
-//    onDismiss: () -> Unit,
-//    onConfirm: (List<RosterInfo>) -> Unit
-//) {
-//    val selectedPlayers = remember { mutableStateListOf<RosterInfo>() }
-//
-//    // https://developer.android.com/develop/ui/views/components/dialogs ref
-//    // the vision is that it is a pop up, you checkbox the players playing and add them and submit,
-//    // they're added to the sesh and then you get transported to the session screen (?)
-//    AlertDialog(
-//        onDismissRequest = onDismiss,
-//        title = { Text("Select Players") },
-//        text = {
-//            Column(modifier = Modifier.fillMaxWidth()) {
-//                if (roster.isEmpty()) {
-//                    Text(
-//                        text = "No players found in roster",
-//                        style = MaterialTheme.typography.bodyMedium
-//                    )
-//                } else {
-//                    LazyColumn(
-//                        modifier = Modifier
-//                            .fillMaxWidth()
-//                            .heightIn(max = 400.dp)
-//                    ) {
-//                        items(roster) { person ->
-//                            Row(
-//                                modifier = Modifier
-//                                    .fillMaxWidth()
-//                                    .clickable {
-//                                        if (selectedPlayers.contains(person)) {
-//                                            selectedPlayers.remove(person)
-//                                        } else {
-//                                            selectedPlayers.add(person)
-//                                        }
-//                                    }
-//                                    .padding(vertical = 8.dp),
-//                                verticalAlignment = Alignment.CenterVertically
-//                            ) {
-//                                Checkbox(
-//                                    checked = selectedPlayers.contains(person),
-//                                    onCheckedChange = null // Click handled by Row
-//                                )
-//                                Text(
-//                                    text = "${person.firstName} ${person.lastName}",
-//                                    modifier = Modifier.padding(start = 8.dp),
-//                                    style = MaterialTheme.typography.bodyLarge
-//                                )
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        },
-//        confirmButton = {
-//            Button(onClick = { onConfirm(selectedPlayers.toList()) }) { Text("Add to Session") }
-//        },
-//        dismissButton = { // get rid of the alert popup
-//            Button(onClick = onDismiss) {
-//                Text("Cancel")
-//            }
-//        }
-//    )
-//}
+// 4/20 ADDING IT BACK but specifically when we click the plus the check boxes come up and it works? Maybe?
+
+@Composable
+fun GameSelectPlayerSelectionDialog(
+    roster: List<RosterInfo>,
+    onDismiss: () -> Unit,
+    onConfirm: (List<RosterInfo>) -> Unit
+) {
+    val selectedPlayers = remember { mutableStateListOf<RosterInfo>() }
+
+    // https://developer.android.com/develop/ui/views/components/dialogs ref
+    // the vision is that it is a pop up, you checkbox the players playing and add them and submit,
+    // they're added to the sesh and then you get transported to the session screen (?)
+
+    // 4/20 reimplementation:
+
+    //
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Select Players") },
+        text = {
+            Column(modifier = Modifier.fillMaxWidth()) {
+                if (roster.isEmpty()) {
+                    Text(
+                        text = "No players found in roster",
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                } else {
+                    LazyColumn(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .heightIn(max = 400.dp)
+                    ) {
+                        items(roster) { person ->
+                            // 4/20 --> SELECTING ATTENDANCE PLAYER
+                            GameSelectPlayerItem(
+                                person = person,
+                                isSelected = selectedPlayers.contains(person),
+                                onToggle = { isSelected ->
+                                    if (isSelected) {
+                                        selectedPlayers.add(person)
+                                    } else {
+                                        selectedPlayers.remove(person)
+
+                                    }
+                                }
+                            )
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            Button(onClick = { onConfirm(selectedPlayers.toList()) }) { Text("Add to game") }
+        },
+        dismissButton = { // get rid of the alert popup
+            Button(onClick = onDismiss) {
+                Text("Cancel")
+            }
+        }
+    )
+}
+    // 4/20
+    // referenced the previous attendance implementation adn modified it for this
+    @Composable
+    fun GameSelectPlayerItem(
+        person: RosterInfo,
+        isSelected: Boolean,
+        onToggle: (Boolean) -> Unit
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { onToggle(!isSelected) }
+                .padding(vertical = 8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = "${person.firstName} ${person.lastName}",
+                    style = MaterialTheme.typography.bodyLarge
+                )
+            }
+        }
+        Checkbox(
+            checked = isSelected,
+            onCheckedChange = { onToggle(it) }
+        )
+    }
+
+
+
+
