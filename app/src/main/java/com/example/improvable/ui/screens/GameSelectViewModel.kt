@@ -76,40 +76,7 @@ class GameSelectViewModel(private val context: Context) : ViewModel() {
     }
 
     private fun loadRoster() {
-        viewModelScope.launch {
-            try {
-                var loadedRoster: List<RosterInfo>? = null
-
-                if (rosterFile.exists()) {
-                    try {
-                        val jsonString = rosterFile.readText()
-                        if (jsonString.isNotBlank()) {
-                            loadedRoster = json.decodeFromString<List<RosterInfo>>(jsonString)
-                        }
-                    } catch (e: Exception) {
-                        Log.e(
-                            "GameSelectViewModel",
-                            "Error reading roster",
-                            e
-                        )
-                    }
-                }
-
-                if (loadedRoster == null) {
-                    try {
-                        val jsonString = context.assets.open("rosterInfo.json").bufferedReader()
-                            .use { it.readText() }
-                        loadedRoster = json.decodeFromString<List<RosterInfo>>(jsonString)
-                    } catch (e: Exception) {
-                        Log.e("GameSelectViewModel", "Error loading roster from assets", e)
-                    }
-                }
-
-                _roster.value = loadedRoster ?: emptyList()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
+        _roster.value = AppPreferences.loadRosterFromPrefs(context)
     }
 
 
