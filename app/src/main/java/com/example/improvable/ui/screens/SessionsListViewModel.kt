@@ -111,7 +111,6 @@ class SessionsListViewModel(private val context: Context) : ViewModel() {
             _allSessions.value.add(sessionInfo)
         }
         currentSession = sessionInfo
-        Log.d("D", "SET CURRENT SESH: " +currentSession)
     }
 
     fun getCurSesh() : SessionInfo {
