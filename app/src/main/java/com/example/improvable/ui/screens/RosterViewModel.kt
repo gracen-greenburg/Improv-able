@@ -13,6 +13,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import java.io.File
+import java.util.UUID
 
 // 4/8 update -- Unclear how we are going to implememnt roster. Meeting to clear things up
 // This class is v similar to GamesViewModel, trying to read the json fiel
@@ -35,6 +36,20 @@ class RosterViewModel(private val context: Context) : ViewModel() {
         _roster.value = AppPreferences.loadRosterFromPrefs(context)
     }
 
+    // adding new member to roster w/ all rosterInfo values
+    fun addMember(firstName: String, lastName: String, returning: Boolean, year: Int, coreCast: Boolean) {
+        val newMember = RosterInfo(
+            id = UUID.randomUUID().toString(),
+            firstName = firstName,
+            lastName = lastName,
+            returning = returning,
+            year = year,
+            coreCast = coreCast
+        )
+        val updatedList = _roster.value + newMember
+        _roster.value = updatedList
+        saveRoster()
+    }
     // marks and updates attendance for each person
     // As of 4/8 no longer taking attendance
 
