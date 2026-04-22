@@ -9,6 +9,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.example.improvable.data.AppPreferences
 import com.example.improvable.data.GamesInfo
 import com.example.improvable.data.RawSessionInfo
 import com.example.improvable.data.RosterInfo
@@ -50,6 +51,7 @@ class SessionsListViewModel(private val context: Context) : ViewModel() {
                 // load in games and players data
                 val gamesJsonString = context.assets.open("gamesInfo.json").bufferedReader().use { it.readText() }
                 val games = Json.decodeFromString<List<GamesInfo>>(gamesJsonString)
+                AppPreferences.saveGamesToPrefs(context, games)
                 val playersJsonString = context.assets.open("rosterInfo.json").bufferedReader().use { it.readText() }
                 val players = Json.decodeFromString<List<RosterInfo>>(playersJsonString)
                 // load in raw session data
@@ -88,6 +90,7 @@ class SessionsListViewModel(private val context: Context) : ViewModel() {
                     )
                     _allSessions.value.add(sesh)
                 }
+//                AppPreferences.saveSessionsToPrefs(context, _allSessions.value)
 
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -111,7 +114,6 @@ class SessionsListViewModel(private val context: Context) : ViewModel() {
             _allSessions.value.add(sessionInfo)
         }
         currentSession = sessionInfo
-        Log.d("D", "SET CURRENT SESH: " +currentSession)
     }
 
     fun getCurSesh() : SessionInfo {

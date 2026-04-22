@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.example.improvable.data.AppPreferences
 import com.example.improvable.data.GamesInfo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -52,10 +53,12 @@ class GamesViewModel(private val context: Context) : ViewModel() {
 
     private fun loadGames() {
         // show off all our data
+        _allGames.value = AppPreferences.loadGamesFromPrefs(context)
         viewModelScope.launch {
             try {
                 val jsonString = context.assets.open("gamesInfo.json").bufferedReader().use { it.readText() }
                 _allGames.value = Json.decodeFromString<List<GamesInfo>>(jsonString)
+
             } catch (e: Exception) {
                 e.printStackTrace()
             }
