@@ -5,8 +5,7 @@
     "lastName": "Albergotti",
     "returning": true,
     "year": 2,
-    "coreCast": true,
-    "notes": ["3/27 show, fronted Pillars, performed in Party Quirks"]
+    "coreCast": true
   },
   {
     "id": "1b2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6e",
@@ -14,8 +13,7 @@
     "lastName": "Hardy",
     "returning": true,
     "year": 2,
-    "coreCast": false,
-    "notes": ["3/27 show, performed in Oracle and Pillars. Great Heated Rivalry bit"]
+    "coreCast": false
   },
   {
     "id": "2c3d4e5f-6a7b-8c9d-0e1f-2a3b4c5d6e7f",
@@ -23,8 +21,7 @@
     "lastName": "Hahne",
     "returning": true,
     "year": 2,
-    "coreCast": true,
-    "notes": ["3/27 show, fronted Seance Oracle (wonderful fronting), performed in Party Quirks"]
+    "coreCast": true
   },
   {
     "id": "3d4e5f6a-7b8c-9d0e-1f2a-3b4c5d6e7f8a",
@@ -32,8 +29,7 @@
     "lastName": "Lang",
     "returning": true,
     "year": 3,
-    "coreCast": true,
-    "notes": ["3/27 show, performed in Oracle and Party Quirks"]
+    "coreCast": true
   },
   {
     "id": "4e5f6a7b-8c9d-0e1f-2a3b-4c5d6e7f8a9b",
@@ -41,8 +37,7 @@
     "lastName": "Member",
     "returning": false,
     "year": 0,
-    "coreCast": false,
-    "notes": ["Just made this one up as filler, I don't want to write all members right now. That's a later job"]
+    "coreCast": false
   },
   {
     "id": "5f6a7b8c-9d0e-1f2a-3b4c-5d6e7f8a9b0c",
@@ -50,7 +45,6 @@
     "lastName": "Greenburg",
     "returning": true,
     "year": 3,
-    "coreCast": true,
-    "notes": ["3/27 show, did cold open, performed in Pillars and was the host in Party Quirks"]
+    "coreCast": true
   }
 ]

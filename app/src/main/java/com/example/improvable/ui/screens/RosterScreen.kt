@@ -205,13 +205,14 @@ fun RosterMemberItem(
                 // FUTURE IMPLEMENTATION:
                 // Maybe we have specifically tagged notes for people
                 // Maybe not
-                if (person.notes.isNotEmpty()) {
-                    Text(
-                        text = "Notes: ${person.notes.joinToString(", ")}",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.primary
-                    )
-                }
+
+//                if (person.notes.isNotEmpty()) {
+//                    Text(
+//                        text = "Notes: ${person.notes.joinToString(", ")}",
+//                        style = MaterialTheme.typography.bodyMedium,
+//                        color = MaterialTheme.colorScheme.primary
+//                    )
+//                }
             }
         }
         // 4/20 STEALING THIS FOR GAME SELECT

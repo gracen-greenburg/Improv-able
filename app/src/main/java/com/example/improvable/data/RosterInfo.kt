@@ -14,5 +14,4 @@ data class RosterInfo (
     val returning: Boolean, // have they been here before?
     val year: Int, // what year are they (1 freshman -> 4 Senior -> 0 other
     val coreCast: Boolean, // are they on core cast
-    val notes: List<String> = emptyList(), // leader can give notes
 )
