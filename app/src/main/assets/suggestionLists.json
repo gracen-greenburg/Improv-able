@@ -5,10 +5,15 @@
       "What's your ideal vacation spot?",
       "I have a little wooden box. What's inside the box?",
       "Give me the title of a movie that doesn't exist.",
-      "Give me a crayon color that's never been used",
+      "Give me a crayon color that's never been made",
       "Give me the name of a famous person",
       "What did you dream about last night?",
-      "What's your million-dollar book idea?"
+      "What's your million-dollar book idea?",
+      "Who's (or what's) origin story should we tell?",
+      "Where's the last place you checked?",
+      "What was your latest big purchase?",
+      "What are your plans for the weekend?",
+      "What's your pet peeve?"
     ]
   },
   {
@@ -19,7 +24,36 @@
       "Little blue bird",
       "Glass jar",
       "Rat-Man",
-      "The Worst Showman"
+      "The Worst Showman",
+      "Human Aquarium",
+      "Telephone Pole",
+      "Home Improvement",
+      "Horse Divorce",
+      "Dance Competition",
+      "Cinderella 2",
+      "Radio show for woodland creatures",
+      "Half Foods Market",
+      "College for Buzzards",
+      "Soup",
+      "What happens at school when you're sick",
+      "The New Generation",
+      "Human Millipede",
+      "Rave at the library",
+      "Every other Thursday",
+      "Animatronics",
+      "Hole Foods Market",
+      "The Rarest Mineral Ever Made",
+      "Sticky",
+      "Everybody's birthday",
+      "Airport",
+      "No one's driving the bus",
+      "My Large Pony",
+      "Bedbugs vs Termites",
+      "Too Many Toasters",
+      "Landfill",
+      "The War Between Antibiotics and Probiotics",
+      "Dehumidifier",
+      "Discount Open Heart Surgery"
     ]
   }
 ]
