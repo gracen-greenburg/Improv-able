@@ -51,6 +51,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.improvable.R
+import com.example.improvable.data.AppPreferences
 import java.io.File
 import java.io.FileOutputStream
 import java.util.Date
@@ -104,6 +105,7 @@ fun SceneScreen(
                 "scene_${currentScene.date}.jpg"
             ) // linking photo data with date n such
             currentScene.thumbnailPath = path
+            viewModel.saveSessions()
         }
     }
 
@@ -162,7 +164,7 @@ fun SceneScreen(
                 )
             } else {
                 Image(
-                    painter = painterResource(R.drawable.plus_sign),
+                    painter = painterResource(R.drawable.unloaded_image_icon),
                     contentDescription = "No thumbnail",
                     modifier = Modifier.size(200.dp)
                 )
