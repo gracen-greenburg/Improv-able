@@ -23,6 +23,7 @@ import com.example.improvable.ui.screens.SessionsScreen
 import com.example.improvable.ui.screens.SuggestionsScreen
 import com.example.improvable.ui.screens.WarmupsScreen
 import com.example.improvable.ui.screens.GameSelectScreen
+import com.example.improvable.ui.screens.LeadershipScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
@@ -41,9 +42,9 @@ fun NavGraph(navController: NavHostController) {
             HomeScreen(
                 onNavigateToWarmups = { navController.navigate("warmups") },
                 onNavigateToGames = { navController.navigate("games") },
-                onNavigateToLeadership = { navController.navigate("leadership") },
+                //onNavigateToLeadership = { navController.navigate("leadership") },
                 onNavigateToRoster = { navController.navigate("roster") },
-                onNavigateToRecording = { navController.navigate("recording") },
+                //onNavigateToRecording = { navController.navigate("recording") },
                 onNavigateToSuggestions = { navController.navigate("suggestions")},
                 onNavigateToSessions = { navController.navigate("sessions")}
             )
@@ -126,93 +127,93 @@ fun NavGraph(navController: NavHostController) {
     }
 }
 
-@Composable
-fun HomeScreen( // starting with three basic screens to get into the flow
-    onNavigateToWarmups: () -> Unit,
-    onNavigateToGames: () -> Unit,
-    onNavigateToLeadership: () -> Unit,
-    onNavigateToRoster: () -> Unit,
-    onNavigateToRecording: () -> Unit, // added this back since it's used in HomeScreen
-    onNavigateToSuggestions: () -> Unit,
-    onNavigateToSessions: () -> Unit) {
-
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = "Home Screen")
-        Button(onClick = onNavigateToWarmups) {
-            Text(text = "Go to WARMUPS")
-        }
-        Button(onClick = onNavigateToGames) {
-            Text(text = "Go to GAMEs")
-        }
-        Button(onClick = onNavigateToLeadership) {
-            Text(text = "Leader screen info and such")
-        }
-        Button(onClick = onNavigateToRoster) {
-            Text(text = "Look at my improv roster")
-        }
-        Button(onClick = onNavigateToSuggestions) {
-            Text(text = "CAN I GET A SUGGESTION")
-        }
-        Button(onClick = onNavigateToSessions) {
-            Text(text = "SESSIONS")
-        }
-    }
-}
-
-@Composable
-fun WarmupsScreen(onNavigateBack: () -> Unit) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = "Warm ups but SO BASIC")
-        Button(onClick = onNavigateBack) {
-            Text(text = "Back")
-        }
-    }
-}
-
-@Composable
-fun GamesScreen(onNavigateBack: () -> Unit) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = "Games Sceen BASIC EDITION")
-        Button(onClick = onNavigateBack) {
-            Text(text = "Back")
-        }
-    }
-}
-
-//@Composable --> going to remove search screen, it can be accomplished with just games screen.
-//fun SearchScreen(onNavigateBack: () -> Unit) {
+//@Composable
+//fun HomeScreen( // starting with three basic screens to get into the flow
+//    onNavigateToWarmups: () -> Unit,
+//    onNavigateToGames: () -> Unit,
+//    onNavigateToLeadership: () -> Unit,
+//    onNavigateToRoster: () -> Unit,
+//    onNavigateToRecording: () -> Unit, // added this back since it's used in HomeScreen
+//    onNavigateToSuggestions: () -> Unit,
+//    onNavigateToSessions: () -> Unit) {
+//
 //    Column(
 //        modifier = Modifier.fillMaxSize(),
 //        horizontalAlignment = Alignment.CenterHorizontally
 //    ) {
-//        Text(text = "Oh I'm searching it I'm searching it")
+//        Text(text = "Home Screen")
+//        Button(onClick = onNavigateToWarmups) {
+//            Text(text = "Go to WARMUPS")
+//        }
+//        Button(onClick = onNavigateToGames) {
+//            Text(text = "Go to GAMEs")
+//        }
+//        Button(onClick = onNavigateToLeadership) {
+//            Text(text = "Leader screen info and such")
+//        }
+//        Button(onClick = onNavigateToRoster) {
+//            Text(text = "Look at my improv roster")
+//        }
+//        Button(onClick = onNavigateToSuggestions) {
+//            Text(text = "CAN I GET A SUGGESTION")
+//        }
+//        Button(onClick = onNavigateToSessions) {
+//            Text(text = "SESSIONS")
+//        }
+//    }
+//}
+//
+//@Composable
+//fun WarmupsScreen(onNavigateBack: () -> Unit) {
+//    Column(
+//        modifier = Modifier.fillMaxSize(),
+//        horizontalAlignment = Alignment.CenterHorizontally
+//    ) {
+//        Text(text = "Warm ups but SO BASIC")
 //        Button(onClick = onNavigateBack) {
 //            Text(text = "Back")
 //        }
 //    }
 //}
-
-@Composable
-fun LeadershipScreen(onNavigateBack: () -> Unit) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text = "Oh and we're leading it")
-        Button(onClick = onNavigateBack) {
-            Text(text = "Back")
-        }
-    }
-}
+//
+//@Composable
+//fun GamesScreen(onNavigateBack: () -> Unit) {
+//    Column(
+//        modifier = Modifier.fillMaxSize(),
+//        horizontalAlignment = Alignment.CenterHorizontally
+//    ) {
+//        Text(text = "Games Sceen BASIC EDITION")
+//        Button(onClick = onNavigateBack) {
+//            Text(text = "Back")
+//        }
+//    }
+//}
+//
+////@Composable --> going to remove search screen, it can be accomplished with just games screen.
+////fun SearchScreen(onNavigateBack: () -> Unit) {
+////    Column(
+////        modifier = Modifier.fillMaxSize(),
+////        horizontalAlignment = Alignment.CenterHorizontally
+////    ) {
+////        Text(text = "Oh I'm searching it I'm searching it")
+////        Button(onClick = onNavigateBack) {
+////            Text(text = "Back")
+////        }
+////    }
+////}
+//
+//@Composable
+//fun LeadershipScreen(onNavigateBack: () -> Unit) {
+//    Column(
+//        modifier = Modifier.fillMaxSize(),
+//        horizontalAlignment = Alignment.CenterHorizontally
+//    ) {
+//        Text(text = "Oh and we're leading it")
+//        Button(onClick = onNavigateBack) {
+//            Text(text = "Back")
+//        }
+//    }
+//}
 
 //@Composable --. commented out vcbc it wouldn't let the updated screen work
 //fun RosterScreen(onNavigateBack: () -> Unit) {
