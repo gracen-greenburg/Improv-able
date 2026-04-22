@@ -10,10 +10,13 @@ import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
@@ -37,8 +40,15 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.improvable.data.GamesInfo
 import com.example.improvable.data.RosterInfo
@@ -62,6 +72,7 @@ fun GamesScreen( // adding the viewmodel so we can change screen
     var showPlayerPicker by remember { mutableStateOf(false) } // pick players in game
     var gameToAddToSession by remember { mutableStateOf<GamesInfo?>(null) } // add the game to sesh
 
+    var showAddGameDialog by remember { mutableStateOf(false) } // like roster --> add game
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -96,11 +107,53 @@ fun GamesScreen( // adding the viewmodel so we can change screen
             }
         }
 
-        Button(onClick = onNavigateBack, modifier = Modifier.padding(top = 16.dp)) {
-            Text(text = "Back") // we can still click back
+        // 4/22 adding a game
+        // 4/22 adding stylyzation
+        Button(
+            onClick = { showAddGameDialog = true },
+            modifier = Modifier
+                .padding(top = 4.dp)
+                .size(height = 40.dp, width = 132.dp),
+            shape = RectangleShape,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.secondary
+            )
+        ) {
+            Text("Add Game",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.SansSerif)
+        }
+
+        Spacer(modifier = Modifier.height(6.dp))
+
+        Button(onClick = onNavigateBack,
+            modifier = Modifier
+                .padding(top = 4.dp)
+                .size(height = 40.dp, width = 132.dp),
+            shape = RectangleShape,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.secondary
+            )) {
+            Text(text = "Back",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.SansSerif) // we can still click back
         }
     }
+    // STOLEN FROM ROSTER
+    if (showAddGameDialog) {
+        AddGameDialog(
+            onDismiss = { showAddGameDialog = false },
+            onConfirm = { title, desc, min, max, tags ->
+                viewModel.addGame(title, desc, min, max, tags)
+                showAddGameDialog = false
+            }
+        )
+    }
 }
+
+
 
 // used https://composeexamples.com/components/application-ui/components/accordions for guidance
 @Composable // DISPLAY GAME INFORMATION
@@ -163,5 +216,83 @@ fun GameItem(
             }
         }
     }
+}
+
+// STOLEN FROM ROSTER
+// we add a game with the roster pop up reformatted
+@Composable
+fun AddGameDialog(
+    onDismiss: () -> Unit,
+    onConfirm: (
+        title: String,
+        description: String,
+        minPlayers: Int,
+        maxPlayers: Int?,
+        tags: List<String>
+    ) -> Unit
+) {
+    var title by remember { mutableStateOf("") }
+    var description by remember { mutableStateOf("") }
+    var minPlayers by remember { mutableStateOf("") }
+    var maxPlayers by remember { mutableStateOf("") }
+    var tagsText by remember { mutableStateOf("") }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("Add Game") },
+        text = {
+            Column {
+                TextField(title, { title = it }, label = { Text("Title") })
+                TextField(description, { description = it }, label = { Text("Description") })
+
+                // Determins min players
+                TextField(
+                    value = minPlayers,
+                    onValueChange = { if (it.all(Char::isDigit)) minPlayers = it },
+                    label = { Text("Min Players") }
+                )
+
+                // optional -- don't need max, it'll be null otherwise
+                TextField(
+                    value = maxPlayers,
+                    onValueChange = { if (it.all(Char::isDigit)) maxPlayers = it },
+                    label = { Text("Max Players (optional)") }
+                )
+
+                // tags
+                // want there to be a list of tags --> user gives us string of tags
+                // OR
+                // we have predefined tags --> buttons to click? ease?
+                // furture implementation ^^
+
+                TextField(
+                    value = tagsText,
+                    onValueChange = { tagsText = it },
+                    label = { Text("Tags (comma-separated)") }
+                )
+            }
+        },
+        confirmButton = {
+            Button(onClick = {
+                if (title.isNotBlank() && minPlayers.isNotBlank()) {
+                    onConfirm(
+                        title,
+                        description,
+                        minPlayers.toInt(),
+                        maxPlayers.toIntOrNull(),
+                        // SPLITTING THE TAGS BY COMMA
+                        tagsText.split(",").map { it.trim() }.filter { it.isNotEmpty() }
+                    )
+                }
+            }) {
+                Text("Add")
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text("Cancel")
+            }
+        }
+    )
 }
 

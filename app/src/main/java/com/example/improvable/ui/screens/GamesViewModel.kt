@@ -51,6 +51,29 @@ class GamesViewModel(private val context: Context) : ViewModel() {
         loadGames() // load games
     }
 
+    // 4/22 implementation
+    // JUST LIKE WITH ADDING IN ROSTER WE ADD A GAME
+    fun addGame(
+        title: String,
+        description: String,
+        minPlayers: Int,
+        maxPlayers: Int?,
+        tags: List<String>
+    ) {
+        val newGame = GamesInfo(
+            id = java.util.UUID.randomUUID().toString(),
+            title = title,
+            description = description,
+            minPlayers = minPlayers,
+            maxPlayers = maxPlayers,
+            tags = tags
+        )
+
+        val updatedList = _allGames.value + newGame
+        _allGames.value = updatedList
+        AppPreferences.saveGamesToPrefs(context, updatedList)
+    }
+
     private fun loadGames() {
         _allGames.value = AppPreferences.loadGamesFromPrefs(context)
     }
