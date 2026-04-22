@@ -48,38 +48,44 @@ fun SessionsScreen(
     )
 ) {
     val displayedSessions by viewModel.displayedSessions.collectAsState()
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Spacer(modifier = Modifier.height(16.dp))
-        //NOTE: make this button add a new Session and take the user to the SessionScreen for that session.
-        Button(onClick = {
-            val newSesh = SessionInfo(emptyList(), System.currentTimeMillis()/1000, "")
-            viewModel.setCurSesh(newSesh)
-            onNavigateToScenes()
-        }) {
-            Text("Add New")
-        }
-        Spacer(modifier = Modifier.height(16.dp))
-        HorizontalDivider()
-        LazyColumn(
+    Column(modifier = Modifier.fillMaxSize()) {
+
+        Header("Sessions")
+
+        Column(
             modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth()
+                .fillMaxSize()
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            items(displayedSessions) { session ->
-                SessionItem(session, viewModel, onNavigateToScenes)
-                HorizontalDivider()
+            Spacer(modifier = Modifier.height(16.dp))
+            //NOTE: make this button add a new Session and take the user to the SessionScreen for that session.
+            Button(onClick = {
+                val newSesh = SessionInfo(emptyList(), System.currentTimeMillis()/1000, "")
+                viewModel.setCurSesh(newSesh)
+                onNavigateToScenes()
+            }) {
+                Text("Add New")
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            HorizontalDivider()
+            LazyColumn(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+            ) {
+                items(displayedSessions) { session ->
+                    SessionItem(session, viewModel, onNavigateToScenes)
+                    HorizontalDivider()
+                }
+            }
+
+            Button(onClick = onNavigateBack, modifier = Modifier.padding(top = 16.dp)) {
+                Text("Back")
             }
         }
-
-        Button(onClick = onNavigateBack, modifier = Modifier.padding(top = 16.dp)) {
-            Text("Back")
-        }
     }
+
 }
 
 @Composable

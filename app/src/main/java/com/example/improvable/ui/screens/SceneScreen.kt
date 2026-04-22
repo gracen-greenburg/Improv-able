@@ -52,6 +52,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.improvable.R
 import com.example.improvable.data.AppPreferences
+import com.example.improvable.data.SceneInfo
 import java.io.File
 import java.io.FileOutputStream
 import java.util.Date
@@ -66,7 +67,6 @@ fun SceneScreen(
 ) {
     val currentScene = viewModel.currentScene
     var tempNotes by remember { mutableStateOf(currentScene.notes) }
-
 
     // using bit map for camera 4/15
     // we decode it into the image for the thumbnail
@@ -119,31 +119,11 @@ fun SceneScreen(
         }
     }
     Column(modifier = Modifier.fillMaxSize()) {
-        Surface(
-            modifier = Modifier
-                .fillMaxWidth(),
-            color = MaterialTheme.colorScheme.primaryContainer
-        ) {
-            Column(
-                modifier = Modifier
-                    // .fillMaxSize() --> parent column stole this and made everything the header which was annoying
-                    .padding(16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    if (currentScene.game == null) "Unknown Game" else currentScene.game!!.title,
-                    fontSize = 40.sp,
-                    fontWeight = FontWeight.Bold,
-                    fontFamily = FontFamily.SansSerif
-                )
-                Spacer(modifier = Modifier.height(10.dp))
-                Text(
-                    Date(currentScene.date * 1000).toString(),
-                    fontSize = 20.sp
-                    // fontWeight = FontWeight.Light
-                ) // real tiny
-            }
-        }
+
+        Header(
+            if (currentScene.game == null) "Unknown Game" else currentScene.game!!.title,
+            Date(currentScene.date * 1000).toString()
+        )
 
 
         Spacer(modifier = Modifier.height(12.dp))

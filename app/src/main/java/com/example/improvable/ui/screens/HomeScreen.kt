@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.foundation.Image
+import androidx.compose.material3.Surface
 import androidx.compose.ui.res.painterResource
 import com.example.improvable.R
 import androidx.compose.ui.unit.sp
@@ -150,5 +151,37 @@ fun HomeScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
+    }
+}
+
+@Composable
+fun Header(title: String, subtitle: String = "") {
+    Surface(
+        modifier = Modifier
+            .fillMaxWidth(),
+        color = MaterialTheme.colorScheme.primaryContainer
+    ) {
+        Column(
+            modifier = Modifier
+                // .fillMaxSize() --> parent column stole this and made everything the header which was annoying
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            if (subtitle.isEmpty()) Spacer(modifier = Modifier.height(15.dp))
+            Text(
+                title,
+                fontSize = 40.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.SansSerif
+            )
+            Spacer(modifier = Modifier.height(if (subtitle.isEmpty()) 15.dp else 10.dp))
+            if (subtitle.isNotEmpty()) {
+                Text(
+                    subtitle,
+                    fontSize = 20.sp
+                    // fontWeight = FontWeight.Light
+                ) // real tiny
+            }
+        }
     }
 }
