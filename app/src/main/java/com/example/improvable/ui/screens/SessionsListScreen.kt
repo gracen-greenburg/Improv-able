@@ -47,7 +47,8 @@ fun SessionsScreen(
         factory = SessionsListViewModel.Factory(LocalContext.current)
     )
 ) {
-    val displayedSessions by viewModel.displayedSessions.collectAsState()
+    val allSessions by viewModel.displayedSessions.collectAsState()
+    val displayedSessions = allSessions.sortedByDescending { it.date }
     Column(modifier = Modifier.fillMaxSize()) {
 
         Header("Sessions")
@@ -103,7 +104,10 @@ fun SessionItem(session : SessionInfo,
         val date = Date(session.date * 1000)
         val parsedDate : List<String> = date.toString().split(" ")
         // 0->dayOfWeek(Mon), 1->month(Jan), 2->day(DD) 3->time(HH:MM:SS), 4->timezone(EDT), 5->year(YYYY)
-        val text = toFullDay(parsedDate[0]) + ", " + toFullMonth(parsedDate[1]) + " " + toOrdinal(parsedDate[2].toInt()) + ", " + parsedDate[5]
+        val text = (toFullMonth(parsedDate[1]) + " "
+                  + toOrdinal(parsedDate[2].toInt()) + ", "
+                  + parsedDate[5] + " ("
+                  + toFullDay(parsedDate[0]) + ")")
         Text(text = text, style = MaterialTheme.typography.titleLarge)
     }
     AnimatedVisibility(
