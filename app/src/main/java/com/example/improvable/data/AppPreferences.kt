@@ -178,6 +178,9 @@ class AppPreferences {
             val seshJsonString = context.assets.open("sessionInfo.json").bufferedReader().use { it.readText() }
             val sessions = Json{ignoreUnknownKeys = true}.decodeFromString<List<RawSessionInfo>>(seshJsonString)
             saveRawSessionsToPrefs(context, sessions)
+
+            // reset warmups info
+
         }
 
 //        fun saveSessionsToPrefs(context: Context, sessions: MutableStateFlow<ArrayList<SessionInfo>>) {

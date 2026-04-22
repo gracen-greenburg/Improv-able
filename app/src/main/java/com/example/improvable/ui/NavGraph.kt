@@ -27,12 +27,13 @@ import com.example.improvable.ui.screens.LeadershipScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {
+
+    // Initialize all app data (only if data has never been initialized on the app.
+    AppPreferences.checkInit(LocalContext.current)
+
     val sessionsViewModel: SessionsListViewModel = viewModel(
         factory = SessionsListViewModel.Factory(LocalContext.current)
     )
-
-    // Initialize all app data (only if data has never been initialized on the app_.
-    AppPreferences.checkInit(LocalContext.current)
 
     NavHost(
         navController = navController,
