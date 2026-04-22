@@ -9,6 +9,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.example.improvable.data.AppPreferences
 import com.example.improvable.data.GamesInfo
 import com.example.improvable.data.RawSessionInfo
 import com.example.improvable.data.RosterInfo
@@ -109,6 +110,7 @@ class SessionsListViewModel(private val context: Context) : ViewModel() {
     fun setCurSesh(sessionInfo: SessionInfo) {
         if (!_allSessions.value.contains(sessionInfo)) {
             _allSessions.value.add(sessionInfo)
+            AppPreferences.saveSessionsToPrefs(context, _allSessions.value)
         }
         currentSession = sessionInfo
     }
