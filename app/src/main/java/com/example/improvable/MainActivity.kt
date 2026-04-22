@@ -9,6 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.example.improvable.data.AppPreferences
 import com.example.improvable.ui.NavGraph
 import com.example.improvable.ui.theme.ImprovableTheme
 
