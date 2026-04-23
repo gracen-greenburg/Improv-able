@@ -22,8 +22,11 @@ import androidx.core.content.edit
 import com.example.improvable.data.AppPreferences
 
 class SuggestionsViewModel(private val context: Context) : ViewModel() {
-    private var _questions = MutableStateFlow<List<String>>(listOf<String>())
+    private var _questions = MutableStateFlow<ArrayList<String>>(arrayListOf<String>())
     private var _generalSuggestions = MutableStateFlow<ArrayList<String>>(arrayListOf<String>())
+
+    private var availableQuestions = _questions.value
+    private var availableSuggestions = _generalSuggestions.value
 
     init {
         loadSessions() // load games
@@ -43,13 +46,12 @@ class SuggestionsViewModel(private val context: Context) : ViewModel() {
     private fun loadSessions() {
         viewModelScope.launch {
             try {
-//                val jsonString = context.assets.open("suggestionLists.json").bufferedReader().use { it.readText() }
                 val jsonString = AppPreferences.loadSuggestionsJsonStringFromPrefs(context)
                 val allSuggestions = Json.decodeFromString<ArrayList<SuggestionsList>>(jsonString)
                 var i = 0;
                 while (i < allSuggestions.size) {
                     if (allSuggestions[i].category.equals("questions")) {
-                        _questions = MutableStateFlow(allSuggestions[i].content)
+                        _questions = MutableStateFlow(ArrayList(allSuggestions[i].content))
                     } else if (allSuggestions[i].category.equals("general suggestions")) {
                         _generalSuggestions = MutableStateFlow(ArrayList<String>(allSuggestions[i].content))
                     }
@@ -62,11 +64,17 @@ class SuggestionsViewModel(private val context: Context) : ViewModel() {
     }
 
     fun getQuestion() : String {
-        return _questions.value.random()
+        if (availableQuestions.isEmpty()) availableQuestions = ArrayList(_questions.value)
+        val picked = availableQuestions.random()
+        availableQuestions.remove(picked)
+        return picked
     }
 
     fun getSuggestion() : String {
-        return _generalSuggestions.value.random()
+        if (availableSuggestions.isEmpty()) availableSuggestions = ArrayList(_generalSuggestions.value)
+        val picked = availableSuggestions.random()
+        availableSuggestions.remove(picked)
+        return picked
     }
 
     fun addSuggestion(suggestion: String) {

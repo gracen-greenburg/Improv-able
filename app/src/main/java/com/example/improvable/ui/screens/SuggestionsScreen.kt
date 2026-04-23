@@ -1,5 +1,6 @@
 package com.example.improvable.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -41,21 +42,13 @@ fun SuggestionsScreen(
         val newSuggestion = remember {mutableStateOf("")}
 
         fun showQuestion() {
-            var old = answer.value;
-            do {
-                answer.value = viewModel.getQuestion()
-            } while (old.equals(answer.value))
+            answer.value = viewModel.getQuestion()
         }
 
         fun showSuggestion() {
-            var old = answer.value;
-            do {
-                answer.value = viewModel.getSuggestion()
-            } while (old.equals(answer.value))
+            answer.value = viewModel.getSuggestion()
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
-        Text("Suggestions", style = MaterialTheme.typography.headlineMedium)
         Spacer(modifier = Modifier.height(32.dp))
 
         Text("Click to get a question for the audience to come up with a guided suggestion.")
