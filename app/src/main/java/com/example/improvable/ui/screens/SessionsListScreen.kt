@@ -16,9 +16,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -29,12 +31,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.toLowerCase
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.improvable.data.SessionInfo
 import java.util.Date
@@ -64,8 +70,17 @@ fun SessionsScreen(
                 val newSesh = SessionInfo(emptyList(), System.currentTimeMillis()/1000, "")
                 viewModel.setCurSesh(newSesh)
                 onNavigateToScenes()
-            }) {
-                Text("Add New")
+            },  modifier = Modifier
+                .padding(top = 4.dp)
+                .size(height = 40.dp, width = 175.dp),
+                shape = RectangleShape,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.secondary
+                ))  {
+                Text("Add New",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = FontFamily.SansSerif)
             }
             Spacer(modifier = Modifier.height(16.dp))
             HorizontalDivider()
@@ -80,8 +95,17 @@ fun SessionsScreen(
                 }
             }
 
-            Button(onClick = onNavigateBack, modifier = Modifier.padding(top = 16.dp)) {
-                Text("Back")
+            Button(onClick = onNavigateBack,  modifier = Modifier
+                .padding(top = 16.dp)
+                .size(height = 40.dp, width = 175.dp),
+                shape = RectangleShape,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.secondary
+                ))  {
+                Text("Back",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = FontFamily.SansSerif)
             }
         }
     }
@@ -141,8 +165,18 @@ fun SessionItem(session : SessionInfo,
                 onClick = {
                     viewModel.setCurSesh(session)
                     onNavigateToScenes() },
-                modifier = Modifier.padding(top = 4.dp, bottom = 8.dp)) {
-                Text("View Session Details")
+                //modifier = Modifier.padding(top = 4.dp, bottom = 8.dp))
+                 modifier = Modifier
+                                .padding(top = 4.dp, bottom = 8.dp)
+                                .size(height = 40.dp, width = 220.dp),
+                                shape = RectangleShape,
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = MaterialTheme.colorScheme.secondary
+                                )){
+                Text("View Session Details",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = FontFamily.SansSerif)
             }
 
             Text(session.notes, fontStyle = FontStyle.Italic)

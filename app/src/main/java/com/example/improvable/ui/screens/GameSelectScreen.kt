@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
@@ -37,8 +38,13 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.improvable.data.GamesInfo
 import com.example.improvable.data.RosterInfo
@@ -107,8 +113,18 @@ fun GameSelectScreen( // adding the viewmodel so we can change screen
             }
         }
 
-        Button(onClick = onNavigateBack, modifier = Modifier.padding(top = 16.dp)) {
-            Text(text = "Back") // we can still click back
+        Button(onClick = onNavigateBack,
+            modifier = Modifier
+            .padding(top = 4.dp, bottom = 8.dp)
+            .size(height = 40.dp, width = 220.dp),
+            shape = RectangleShape,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.secondary
+            )) {
+            Text(text = "Back",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.SansSerif) // we can still click back
         }
 
         if (showPlayerPicker && gameToAddToSession != null) {
@@ -261,12 +277,29 @@ fun GameSelectPlayerSelectionDialog(
                 }
             }
         },
+
         confirmButton = {
-            Button(onClick = { onConfirm(selectedPlayers.toList()) }) { Text("Add to game") }
+            Button(onClick = { onConfirm(selectedPlayers.toList()) },
+                modifier = Modifier.size(height = 65.dp, width = 120.dp),
+                shape = RectangleShape,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.secondary
+                )) { Text("Add to game",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.SansSerif) }
         },
         dismissButton = { // get rid of the alert popup
-            Button(onClick = onDismiss) {
-                Text("Cancel")
+            Button(onClick = onDismiss,
+                modifier = Modifier.size(height = 65.dp, width = 120.dp),
+                shape = RectangleShape,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.secondary
+                )) {
+                Text("Cancel",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = FontFamily.SansSerif)
             }
         }
     )

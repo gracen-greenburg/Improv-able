@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.HorizontalDivider
@@ -34,10 +35,15 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.improvable.data.RosterInfo
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntSize
+import androidx.compose.ui.unit.sp
 
 // updating with viewModel addition 3/29
 @Composable
@@ -76,18 +82,39 @@ fun RosterScreen(onNavigateBack: () -> Unit, // same thing as gameScreen
             }
 
             // keep navigation back
-            Column(modifier = Modifier.padding(top = 16.dp)) {
+            Column(modifier = Modifier
+                .padding(top = 16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally) {
                 // 4/21 adding member as a button
                 Button(
                     onClick = { showAddDialog = true },
-                    modifier = Modifier.padding(top = 8.dp)
+                    modifier = Modifier
+                        .padding(top = 4.dp)
+                        .size(height = 40.dp, width = 200.dp),
+                    shape = RectangleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondary
+                    )
                 ) {
-                    Text("Add New Member")
+                    Text("Add New Member",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily.SansSerif)
                 }
                 // Back Button
                 Button(
-                    onClick = onNavigateBack) {
-                    Text(text = "Back")
+                    onClick = onNavigateBack,
+                    modifier = Modifier
+                        .padding(top = 4.dp)
+                        .size(height = 40.dp, width = 200.dp),
+                    shape = RectangleShape,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondary
+                    )) {
+                    Text(text = "Back",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        fontFamily = FontFamily.SansSerif)
                 }
             }
         }
@@ -151,13 +178,25 @@ fun AddMemberDialog(
                 if (firstName.isNotBlank() && lastName.isNotBlank()) {
                     onConfirm(firstName, lastName, isReturning, year.toIntOrNull() ?: 0, isCore)
                 }
-            }) {
-                Text("Add")
+            }, modifier = Modifier
+                .padding(top = 4.dp)
+                .size(height = 40.dp, width = 175.dp),
+                shape = RectangleShape,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.secondary
+                )) {
+                Text("Add",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = FontFamily.SansSerif)
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("Back")
+                Text("Back",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = FontFamily.SansSerif)
             }
         }
     )

@@ -143,7 +143,7 @@ fun HomeScreen(
                 )
                 ) {
                 Text("Suggestions",
-                    fontSize = 22.sp,
+                    fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     fontFamily = FontFamily.SansSerif)
             }
