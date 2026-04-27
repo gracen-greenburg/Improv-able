@@ -189,8 +189,8 @@ fun SessionItem(session : SessionInfo,
 fun toOrdinal(value: Int) : String {
     if ((value / 10) % 10 == 1) return value.toString() + "th"
     if (value % 10 == 1) return value.toString() + "st"
-    if (value % 10 == 1) return value.toString() + "nd"
-    if (value % 10 == 1) return value.toString() + "rd"
+    if (value % 10 == 2) return value.toString() + "nd"
+    if (value % 10 == 3) return value.toString() + "rd"
     return value.toString() + "th"
 }
 
